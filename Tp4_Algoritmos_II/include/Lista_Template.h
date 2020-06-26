@@ -8,7 +8,7 @@
 #include<iostream>
 
 
-template<typedef Dato>
+template<class Dato>
 class Lista
 {
 
@@ -55,26 +55,26 @@ private:
 
 
 //////////////////////////////////////////////////////////////////////
-template<typedef Dato>
+template<class Dato>
 Lista<Dato>::Lista()
 {
     primero = 0 ;
     tam = 0;
 }
-template<typedef Dato>
+template<class Dato>
 Lista<Dato>::~Lista()
 {
     while (!(this->lista_vacia()))
         this->del_dato(1);
 }
 
-template<typedef Dato>
+template<class Dato>
 bool Lista<Dato>::lista_vacia()
 {
     return(primero == 0);
 }
 
-template<typedef Dato>
+template<class Dato>
 void Lista<Dato>::insertar(Dato d)
  {
     Nodo<Dato>* pnodo = new Nodo<Dato>(d);
@@ -92,8 +92,8 @@ void Lista<Dato>::insertar(Dato d)
 }
 
 
-template<typedef Dato>
-Dato Lista::get_dato(unsigned pos)
+template<class Dato>
+Dato Lista<Dato>::get_dato(unsigned pos)
 {
     Nodo<Dato>* paux = primero;
 
@@ -107,8 +107,8 @@ Dato Lista::get_dato(unsigned pos)
     return paux->get_dato();
 }
 
-template<typedef Dato>
-void Lista::del_dato(unsigned pos)
+template<class Dato>
+void Lista<Dato>::del_dato(unsigned pos)
 {
    Nodo<Dato>* paux = primero;
     if (pos == 1 || !(primero->get_siguiente()))
@@ -131,8 +131,8 @@ void Lista::del_dato(unsigned pos)
     tam--;
 }
 
-template<typedef Dato>
-unsigned Lista::get_tam()
+template<class Dato>
+unsigned Lista<Dato>::get_tam()
 {
     return tam;
 }
