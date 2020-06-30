@@ -28,10 +28,6 @@ class Menu
         //POST:Carga las peliculas a las listas
         void cargarPeliculas();
 
-        //PRE: - Elementos en las listas y recibe una opcion
-        //POST: Muestra los elementos de la lista elegida con sus caracteristicas
-        void mostrar(int listaElegida);
-
         //PRE -
         //POST: Muestra la lista de recomendacion
         void mostrarRecomendacion();

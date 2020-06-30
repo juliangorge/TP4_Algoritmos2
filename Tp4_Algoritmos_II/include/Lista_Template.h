@@ -61,12 +61,14 @@ Lista<Dato>::Lista()
     primero = 0 ;
     tam = 0;
 }
+
 template<class Dato>
 Lista<Dato>::~Lista()
 {
     while (!(this->lista_vacia()))
         this->del_dato(1);
 }
+
 
 template<class Dato>
 bool Lista<Dato>::lista_vacia()
@@ -92,6 +94,7 @@ void Lista<Dato>::insertar(Dato d)
 }
 
 
+
 template<class Dato>
 Dato Lista<Dato>::get_dato(unsigned pos)
 {
@@ -106,6 +109,7 @@ Dato Lista<Dato>::get_dato(unsigned pos)
 
     return paux->get_dato();
 }
+
 
 template<class Dato>
 void Lista<Dato>::del_dato(unsigned pos)
@@ -130,6 +134,7 @@ void Lista<Dato>::del_dato(unsigned pos)
     delete paux;
     tam--;
 }
+
 
 template<class Dato>
 unsigned Lista<Dato>::get_tam()
