@@ -5,8 +5,8 @@
 #include"Pelicula.h"
 
 
-//Clase Menu encargada del manejo de datos
-class Menu
+//Clase Archivo encargada del manejo de archivo
+class Archivo
 {
     private:
 
@@ -19,18 +19,17 @@ class Menu
 
         //Constructor
 
-        Menu();
+        Archivo();
 
-        //PRE -
-        //POST: Muestra la lista de recomendacion
-        void mostrarRecomendacion();
+        //PRE: Peliculas vistas y no vistas ya cargadas
+        void armarRecomendada();
 
-        //PRE: -
-        //POST: Muestra por pantalla las opciones del Menu
-        void mostrarOpciones();
+        //PRE: Recibe un archivo txt
+        //POST: Carga las peliculas a las listas
+        void cargarPeliculas();
 
         //Destructor
-        ~Menu();
+        ~Archivo();
 
 };
 
