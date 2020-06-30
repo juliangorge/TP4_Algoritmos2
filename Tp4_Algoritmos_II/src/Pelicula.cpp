@@ -1,11 +1,12 @@
 #include "Pelicula.h"
 
-Pelicula::Pelicula(string nombre, string genero, string director)
+Pelicula::Pelicula(string nombre, string genero, string director , double puntaje)
 {
     //Atributos
     this->nombre   = nombre;
     this->genero   = genero;
     this->director = director;
+    this->puntaje  = puntaje;
 
 
 }
@@ -30,6 +31,11 @@ string Pelicula::getGenero()
 string Pelicula::getDirector()
 {
     return director;
+}
+
+double Pelicula::getPuntaje()
+{
+    return puntaje;
 }
 
 string getActores()

@@ -1,6 +1,8 @@
 #ifndef PELICULA_H
 #define PELICULA_H
 
+#include<string>
+
 #include"Lista_Template.h"
 
 class Pelicula
@@ -10,6 +12,8 @@ class Pelicula
         string nombre;
         string genero;
         string director;
+        double puntaje;
+
         Lista<string> actores;
 
     public: //Metodos
@@ -32,6 +36,10 @@ class Pelicula
         //PRE: -
         //POST: Devuelve el director de la pelicula
         string getDirector();
+
+        //PRE:
+        //POST: Devuelve el puntaje
+        double getPuntaje();
 
         //PRE: -
         //POST: Devuelve todo los actores
