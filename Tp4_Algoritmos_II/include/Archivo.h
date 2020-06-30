@@ -1,5 +1,5 @@
-#ifndef MENU_H
-#define MENU_H
+#ifndef ARCHIVO_H
+#define ARCHIVO_H
 
 #include"Lista_Template.h"
 #include"Pelicula.h"
@@ -33,4 +33,4 @@ class Archivo
 
 };
 
-#endif // MENU_H
+#endif // ARCHIVO_H
