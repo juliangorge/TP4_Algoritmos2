@@ -5,9 +5,13 @@
 #define TP4_ALGORITMOS2_EXCEPCIONLECTURA_H
 
 class ExcepcionLectura: public exception {
+
 private:
+
     string archivo;
+
 public:
+    //FALTAN LOS PRE Y POST
     ExcepcionLectura(string archivo) throw();
     virtual const char* what() const throw();
 

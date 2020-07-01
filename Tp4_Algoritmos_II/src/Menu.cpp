@@ -1,5 +1,6 @@
 #include "Menu.h"
 
+
 Menu::Menu()
 {
 
@@ -11,6 +12,12 @@ void mostrarRecomendacion(){
 
 }
 
+void Menu::cargarDatos()
+{
+    //Generamos las listas correspondientes
+    listas.generarListas();
+    cout << "Se han cargado los datos correctamente! "<<endl;
+}
 
 void Menu::mostrarOpciones()
 {
@@ -19,6 +26,8 @@ void Menu::mostrarOpciones()
     cout << " 2 - Mostrar peliculas  no vistas "<<endl;
     cout << " 3 - Recomendacion de  peliculas "<<endl;
 }
+
+
 Menu::~Menu()
 {
     //dtor
