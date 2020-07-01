@@ -15,7 +15,7 @@ void armarRecomendada(){
 
 }
 
-//GETTERS DE LAS LISTAS
+//GETTERS DE LAS LISTAS (DEVUELVEN LA LISTA PARA MANEJAR)
 
 Lista<Pelicula*> Archivo::getListaNoVistas()
 {
