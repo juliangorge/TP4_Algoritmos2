@@ -7,14 +7,20 @@ Archivo::Archivo()
 
 //PRE: Peliculas vistas y no vistas ya cargadas
 void armarRecomendada(){
-
+	/*
+	Lista recomendada:
+	Pelicula -> género, director, actores
+	Se recomienda comparando la lista de NO VISTAS, si [ coincide el genero Y director / 1 actor ] o puntaje >= 7
+	*/
+	
 }
 
 //PRE: Recibe un archivo txt
 //POST: Carga las peliculas a las listas
 void cargarPeliculas(ifstream& archivoVistas, ifstream& archivoNoVistas){
 	
-	string titulo, genero, puntaje, director, actores, actor;
+	string titulo, genero, puntaje, director, actores;
+	string arrayActores[];
 
 	while(!archivoVistas.oef()){
 		getline(archivoVistas, titulo);
@@ -26,6 +32,7 @@ void cargarPeliculas(ifstream& archivoVistas, ifstream& archivoNoVistas){
 		while(getline(actores, actor, ' ')){
 			//...
 		}
+
 
 		Pelicula* pelicula = new Pelicula(titulo, genero, puntaje, director, actores);
 		// Sugerencia: Imprimir "Nueva pelicula vista cargada!"
@@ -45,13 +52,9 @@ void cargarPeliculas(ifstream& archivoVistas, ifstream& archivoNoVistas){
 
 		Pelicula* pelicula = new Pelicula(titulo, genero, puntaje, director, actores);
 		// Sugerencia: Imprimir "Nueva pelicula no vista cargada!"
-	}
 
-	/*
-	Lista recomendado:
-	Pelicula -> género, director, actores
-	Se recomienda comparando la lista de NO VISTAS, si [ coincide el genero Y director / 1 actor ] o puntaje >= 7
-	*/
+		if(puntaje >= 7) armarRecomendada(titulo, genero, director, actores);
+	}
 }
 
 Archivo::~Archivo()
