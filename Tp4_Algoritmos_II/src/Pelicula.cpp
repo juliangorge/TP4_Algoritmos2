@@ -46,6 +46,16 @@ string getActores()
     }
 }
 
+
+void Pelicula::mostrarPelicula()
+{
+    //Muestra las peliculas
+    cout<<"Nombre: "<<getNombre()<<endl;
+    cout<<"Director: "<<getDirector()<<endl;
+    cout<<"Puntaje: "<<getPuntaje()<<endl;
+    cout<<"Actores: \n"<<getActores()<<endl;
+}
+
 Pelicula::~Pelicula()
 {
 
