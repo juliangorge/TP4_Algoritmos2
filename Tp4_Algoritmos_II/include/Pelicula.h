@@ -25,6 +25,10 @@ class Pelicula
         //POST: Inserta el actor a la lista
         void insertarActor(string actor);
 
+        //PRE:
+        //POS: Muestra los datos de la pelicula
+        void mostrarPelicula();
+
         //PRE: -
         //POST: Devuelve el nombre de la pelicula
         string getNombre();

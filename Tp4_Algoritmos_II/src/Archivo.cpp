@@ -15,7 +15,7 @@ void armarRecomendada(){
 
 }
 
-//GETTERS DE LAS LISTAS
+//GETTERS DE LAS LISTAS (DEVUELVEN LA LISTA PARA MANEJAR)
 
 Lista<Pelicula*> Archivo::getListaNoVistas()
 {
@@ -40,6 +40,15 @@ void Archivo::generarListas()
     //CARGO LAS NO VISTAS
     cargarPeliculas(getListaNoVistas(),archivoNoVistas);
 
+}
+
+void Archivo::mostrarse(Lista<Pelicula*> &lista)
+{
+    for(unsigned i = 0 ; i <= lista.get_tam ; i++)
+    {
+        //El dato es un puntero a pelicula
+        lista.get_dato(i)->mostrarPelicula();
+    }
 }
 
 //HICE ESTAS FUNCIONES PARA NO REPETIR EL CODIGO DE CARGAR LAS PELICULAS

@@ -2,7 +2,7 @@
 
 int main()
 {
-    Menu menu();
+    Menu menu;
     int opcion;
 
     //Cargariamos los datos

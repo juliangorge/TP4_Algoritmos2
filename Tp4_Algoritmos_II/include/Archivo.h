@@ -49,6 +49,10 @@ class Archivo
         //POST: Carga las peliculas a las listas
         void cargarPeliculas( Lista<Pelicula*> &lista , string rutaArchivo);
 
+        //PRE: Recibe la lista a mostrar
+        //POST: Muestra TODOS los elementos de la lista
+        void mostrarse(Lista<Pelicula*> &lista);
+
         //Destructor
         ~Archivo();
 
