@@ -20,7 +20,7 @@ void Pelicula ::insertarActor(string actor)
 //Getters -
 string Pelicula::getNombre()
 {
-    return nombre
+    return nombre;
 }
 
 string Pelicula::getGenero()
@@ -38,7 +38,7 @@ double Pelicula::getPuntaje()
     return puntaje;
 }
 
-string getActores()
+string Pelicula::getActores()
 {
     for(unsigned i = 1 ; i << actores.get_tam(); i++)
     {
