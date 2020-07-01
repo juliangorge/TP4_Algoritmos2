@@ -8,8 +8,22 @@ Menu::Menu()
 
 //PRE -
 //POST: Muestra la lista de recomendacion
-void mostrarRecomendacion(){
+void Menu::mostrarRecomendacion(){
 
+    //Muestra  la lista de Recomendaciones
+    listas.mostrarse(listas.getListaRecomendados());
+
+}
+void Menu::mostrarNoVistas()
+{
+    //Muestra  la lista de no vistas
+    listas.mostrarse(listas.getListaNoVistas());
+
+}
+void Menu::mostrarVistas()
+{
+    //Muestra  la lista de vistas
+    listas.mostrarse(listas.getListaVistas());
 }
 
 void Menu::cargarDatos()

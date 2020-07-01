@@ -42,6 +42,15 @@ void Archivo::generarListas()
 
 }
 
+void Archivo::mostrarse(Lista<Pelicula*> &lista)
+{
+    for(unsigned i = 0 ; i <= lista.get_tam ; i++)
+    {
+        //El dato es un puntero a pelicula
+        lista.get_dato(i)->mostrarPelicula();
+    }
+}
+
 //HICE ESTAS FUNCIONES PARA NO REPETIR EL CODIGO DE CARGAR LAS PELICULAS
 
 
