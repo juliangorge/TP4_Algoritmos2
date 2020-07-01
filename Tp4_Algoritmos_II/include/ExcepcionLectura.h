@@ -11,8 +11,12 @@ private:
     string archivo;
 
 public:
-    //FALTAN LOS PRE Y POST
-    ExcepcionLectura(string archivo) throw();
+    //PRE: -
+    //POST: Construye la excepcion con el nombre del archivo
+    ExcepcionLectura (string archivo) throw();
+
+    //PRE: -
+    //POST: devuelve un mensaje describiendo la excepcion
     virtual const char* what() const throw();
 
 };

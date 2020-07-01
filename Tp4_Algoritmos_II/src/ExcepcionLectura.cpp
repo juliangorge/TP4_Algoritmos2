@@ -6,9 +6,10 @@ using namespace std;
 
 ExcepcionLectura::ExcepcionLectura (string archivo) throw()
 {
-    this->archivo = archivo;
+    this->mensaje = "Error en la lectura del archivo: '" + archivo + "'\n";
 }
+
 virtual const char* ExcepcionLectura::what() const throw()
 {
-    return "\n Error en la lectura del archivo: "<< archivo << endl;
+    return mensaje.c_str();
 }
