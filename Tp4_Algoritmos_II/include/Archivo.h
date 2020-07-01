@@ -4,6 +4,9 @@
 #include"Lista_Template.h"
 #include"Pelicula.h"
 
+const string archivoVistas = "peliculas_vistas.txt";
+const string archivoNoVistas = "peliculas_no_vistas.txt";
+
 
 //Clase Archivo encargada del manejo de archivo
 class Archivo
@@ -22,11 +25,29 @@ class Archivo
         Archivo();
 
         //PRE: Peliculas vistas y no vistas ya cargadas
+        //POST: Carga las recomendadas a lista
         void armarRecomendada();
 
-        //PRE: Recibe un archivo txt
+        //PRE:-
+        //POST:Genera ambas listas.
+        void generarListas();
+
+        //PRE:-
+        //POST:Devuelve la lista vista
+        Lista<Pelicula*> getListaVistas();
+
+        //PRE:-
+        //POST:Devuelve la lista vista
+        Lista<Pelicula*> getListaNoVistas();
+
+        //PRE:-
+        //POST:Devuelve la lista vista
+        Lista<Pelicula*> getListaRecomendados();
+
+
+        //PRE: Recibe una lista y una ruta de tipo string archivo txt
         //POST: Carga las peliculas a las listas
-        void cargarPeliculas();
+        void cargarPeliculas( Lista<Pelicula*> &lista , string rutaArchivo);
 
         //Destructor
         ~Archivo();

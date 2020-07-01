@@ -19,7 +19,7 @@ class Pelicula
     public: //Metodos
 
         //Constructor
-        Pelicula(string nombre, string genero, string director);
+        Pelicula(string nombre, string genero, string director,double puntaje);
 
         //PRE: Lista de actores
         //POST: Inserta el actor a la lista
