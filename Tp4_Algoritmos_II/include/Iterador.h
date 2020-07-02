@@ -13,31 +13,31 @@ private:
 
 public:
 
-	// constructor sin parametros
-	// POST: crea un iterador
+	// constructor sin parametros.
+	// POST: crea un iterador.
 	Iterador();
 
-	// destructor
-	// POST: destruye un iterador
+	// destructor.
+	// POST: destruye un iterador.
 	virtual ~Iterador();
 
-	// POST: setea los atributos
+	// POST: setea los atributos.
 	void setearInicio(Nodo<Dato>** nodoInicial, unsigned* tamInicial);
 
 
-	// POST: salta al siguiente elemento de la lista
+	// POST: salta al siguiente elemento de la lista.
 	void siguiente();
 
-	// POST: devuelve true si es el fonal de la lista
+	// POST: devuelve true si es el fonal de la lista.
 	bool finalIterador();
 
-	// POST: devuelve el dato de la posicion actual
+	// POST: devuelve el dato de la posicion actual.
 	Dato obtenerDato();
 
-	// POST: devuelve el dato de la posicion actual y lo elimina de la lista
+	// POST: devuelve el dato de la posicion actual y lo elimina de la lista.
 	Dato eliminarDato();
 
-	// POST: agrega un dato ANTES del dato actual
+	// POST: agrega un dato ANTES del dato actual. Si no quedan más datos lo agrega al final.
 	void agregarDato(Dato datoAgregado);
 };
 
@@ -65,7 +65,8 @@ void Iterador<Dato>::setearInicio(Nodo<Dato>** inicial, unsigned* tamInicial)
 template<class Dato>
 void Iterador<Dato>::siguiente()
 {
-	actual = (*actual)->get_puntero_siguiente();
+	if(!finalIterador())
+		actual = (*actual)->get_puntero_siguiente();
 }
 
 template<class Dato>
@@ -77,12 +78,17 @@ bool Iterador<Dato>::finalIterador()
 template<class Dato>
 Dato Iterador<Dato>::obtenerDato()
 {
+	if(finalIterador())
+		return 0;
 	return (*actual)->get_dato();
 }
 
 template<class Dato>
 Dato Iterador<Dato>::eliminarDato()
 {
+	if(finalIterador())
+		return 0;
+
 	Nodo<Dato>* nodoAuxiliar = *actual;
 	Dato datoAuxiliar = nodoAuxiliar->get_dato();
 	*actual = (*actual)->get_siguiente();
@@ -96,9 +102,11 @@ template<class Dato>
 void Iterador<Dato>::agregarDato(Dato datoAgregado)
 {
 	Nodo<Dato>* nodoAuxiliar= new Nodo<Dato>(datoAgregado);
-	Nodo<Dato>* nodoSiguiente = (*actual)->get_siguiente();
-	nodoAuxiliar->set_siguiente(nodoSiguiente);
-
+	if(!finalIterador())
+	{
+		Nodo<Dato>* nodoSiguiente = (*actual)->get_siguiente();
+		nodoAuxiliar->set_siguiente(nodoSiguiente);
+	}
 	*tamLista = (*tamLista) +1;
 	*actual = nodoAuxiliar;
 
