@@ -2,7 +2,8 @@
 #define LISTA_TEMPLATE_H
 
 //Include del paquete Nodo
-#include"Nodo_Template.h"
+#include "Nodo_Template.h"
+#include "Iterador.h"
 
 //Libria iostream
 #include<iostream>
@@ -28,7 +29,7 @@ private:
      // Destructor
      // PRE: lista creada
      // POST: Libera todos los recursos de la lista
-     ~Lista();
+     virtual ~Lista();
 
      // PRE: lista creada
      // POST: devuelve verdadero si la lista es vacia
@@ -50,6 +51,13 @@ private:
      // PRE: Lista creada
      // POST: Devuelve tam (cantidad de nodos de la lista)
      unsigned get_tam();
+
+     // POST: vacia la lista sin borrar los datos
+     void varciar_lista();
+
+     // PRE: iterador debe estar creado
+     // POST: inicializa el iterador
+     void iniciar_iterador(Iterador<Dato>& iteradorLista);
 };
 
 
@@ -140,6 +148,24 @@ template<class Dato>
 unsigned Lista<Dato>::get_tam()
 {
     return tam;
+}
+
+template<class Dato>
+void Lista<Dato>::varciar_lista()
+{
+    while (!(this->lista_vacia()))
+    {
+    	primero->set_dato(0);
+        this->del_dato(1);
+    }
+
+}
+
+
+template<class Dato>
+void Lista<Dato>::iniciar_iterador(Iterador<Dato>& iteradorLista)
+{
+	iteradorLista.setearInicio(&primero, &tam);
 }
 
 #endif // LISTA_TEMPLATE_H

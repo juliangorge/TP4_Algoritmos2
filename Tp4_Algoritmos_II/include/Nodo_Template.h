@@ -20,7 +20,7 @@ class Nodo
 
      // PRE: Nodo creado
      // POST: No hace nada
-     ~Nodo();
+     virtual ~Nodo();
 
      // PRE: el nodo tiene que estar creado
      // POST: El nodo queda con el dato d
@@ -37,6 +37,8 @@ class Nodo
      // PRE: nodo creado
      // POST: Devuelve el puntero al siguiente nodo
      Nodo* get_siguiente();
+
+     Nodo** get_puntero_siguiente();
 };
 
 
@@ -54,7 +56,8 @@ template<class Dato>
 Nodo<Dato>::~Nodo()
 {
     //Como el dato tiene memoria reservada , debo liberarla
-    delete dato;
+	if (dato != 0)
+		delete dato;
 }
 
 template<class Dato>
@@ -82,6 +85,13 @@ Nodo<Dato>* Nodo<Dato>::get_siguiente()
 {
     return psig;
 }
+
+template<class Dato>
+Nodo<Dato>** Nodo<Dato>::get_puntero_siguiente()
+{
+    return &psig;
+}
+
 
 
 #endif // NODO_TEMPLATE_H
