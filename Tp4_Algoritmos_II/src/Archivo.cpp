@@ -71,37 +71,34 @@ void Archivo::mostrarse(Lista<Pelicula*> &lista)
 
 //HICE ESTAS FUNCIONES PARA NO REPETIR EL CODIGO DE CARGAR LAS PELICULAS
 
-
-//PRE: Recibe un archivo txt
-//POST: Carga las peliculas a las listas
 void cargarPeliculas( Lista<Pelicula*> &lista , string rutaArchivo){
 
 	ifstream archivo;
 	archivo.open(rutaArchivo, fstream::in);
-	if(!archivo){
 
-		string titulo, genero, director, actores;
-		double puntaje;
-		string arrayActores[];
+	if(archivo.fail()) {
+        throw ExcepcionLectura(archivo);
+    }
 
-		while(!archivo.eof()){
-			getline(archivoVistas, titulo,'\n');
-			getline(archivoVistas, genero,'\n');
-			getline(archivoVistas, puntaje,'\n');
-			getline(archivoVistas, director,'\n');
-			getline(archivoVistas, actores,'\n');
+	string titulo, genero, director, actores;
+	double puntaje;
+	string arrayActores[];
 
-	        Pelicula* pelicula = new Pelicula(titulo, genero, director, puntaje);
+	while(!archivo.eof()){
+		getline(archivoVistas, titulo,'\n');
+		getline(archivoVistas, genero,'\n');
+	    getline(archivoVistas, puntaje,'\n');
+		getline(archivoVistas, director,'\n');
+		getline(archivoVistas, actores,'\n');
 
-			while(getline(actores, actor, ' ')){
-				pelicula->insertarActor(&actor);
-			}
+        Pelicula* pelicula = new Pelicula(titulo, genero, director, puntaje);
+
+		while(getline(actores, actor, ' ')){
+			pelicula->insertarActor(&actor);
 		}
+	}
 
 		archivo.close();
-	}else{
-		cout << "No se pudo abrir el archivo" << endl;
-	}
 }
 
 Archivo::~Archivo()
