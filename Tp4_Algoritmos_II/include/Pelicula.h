@@ -4,7 +4,6 @@
 #include<string>
 
 #include "Lista_Template.h"
-#include "Iterador.h"
 
 class Pelicula
 {
@@ -62,6 +61,10 @@ class Pelicula
 
         // POST: devuelve el true si las peliculas comparten al menos 1 actor
         bool compararActores(Pelicula* paliculaAComparar);
+
+        // POST: devulve true si el atributo puntaje de esta pelicula es mayor a 7
+        // o si las peliculas comparten género y comparten o el director o algún actor
+        bool recomendarPelicula(Pelicula* paliculaAComparar);
 
 };
 

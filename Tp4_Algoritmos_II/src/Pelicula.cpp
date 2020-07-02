@@ -1,4 +1,5 @@
 #include "Pelicula.h"
+#include "Iterador.h"
 
 
 Pelicula::Pelicula(string nombre, string genero, string director , double puntaje)
@@ -70,17 +71,17 @@ bool Pelicula::verificarPuntaje()
 	return puntaje >= 7;
 }
 
-bool Pelicula::compararGenero(Pelicula* paliculaAComparar)
+bool Pelicula::compararGenero(Pelicula* peliculaAComparar)
 {
-	return genero == paliculaAComparar->genero;
+	return genero == peliculaAComparar->genero;
 }
 
-bool Pelicula::compararDirector(Pelicula* paliculaAComparar)
+bool Pelicula::compararDirector(Pelicula* peliculaAComparar)
 {
-	return director == paliculaAComparar->director;
+	return director == peliculaAComparar->director;
 }
 
-bool Pelicula::compararActores(Pelicula* paliculaAComparar)
+bool Pelicula::compararActores(Pelicula* peliculaAComparar)
 {
 	Iterador<string*> estaPelicula;
 	Iterador<string*> otraPelicula;
@@ -89,12 +90,25 @@ bool Pelicula::compararActores(Pelicula* paliculaAComparar)
 	for(actores.iniciar_iterador(estaPelicula);!estaPelicula.finalIterador(); estaPelicula.siguiente())
 	{
 		actorEstaPelicula = estaPelicula.obtenerDato();
-		for(paliculaAComparar->actores.iniciar_iterador(otraPelicula);!otraPelicula.finalIterador(); otraPelicula.siguiente())
+		for(peliculaAComparar->actores.iniciar_iterador(otraPelicula);!otraPelicula.finalIterador(); otraPelicula.siguiente())
 		{
 			actorOtraPelicula = otraPelicula.obtenerDato();
 			if(*actorEstaPelicula == *actorOtraPelicula)
 				return true;
 		}
 	}
+	return false;
+}
+
+bool Pelicula::recomendarPelicula(Pelicula* peliculaAComparar)
+{
+	if (verificarPuntaje())
+		return true;
+	if (!compararGenero(peliculaAComparar))
+		return false;
+	if (compararDirector(peliculaAComparar))
+		return true;
+	if (compararActores(peliculaAComparar))
+		return true;
 	return false;
 }

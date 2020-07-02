@@ -1,4 +1,7 @@
 #include "Archivo.h"
+#include <fstream>
+
+#include "Iterador.h"
 
 Archivo::Archivo()
 {
@@ -6,12 +9,27 @@ Archivo::Archivo()
 }
 
 //PRE: Peliculas vistas y no vistas ya cargadas
-void armarRecomendada(){
-	/*
-	Lista recomendada:
-	Pelicula -> género, director, actores
-	Se recomienda comparando la lista de NO VISTAS, si [ coincide el genero Y director / 1 actor ] o puntaje >= 7
-	*/
+void Archivo::armarRecomendada()
+{
+	Iterador<Pelicula*> iteradorVistas;
+	Iterador<Pelicula*> iteradorNoVistas;
+	Pelicula* peliculaVista;
+	Pelicula* peliculaNoVista;
+	bool pelicularecomendada;
+	for(listaNoVistas.iniciar_iterador(iteradorNoVistas);!iteradorNoVistas.finalIterador(); iteradorNoVistas.siguiente())
+	{
+		peliculaNoVista = iteradorNoVistas.obtenerDato();
+		pelicularecomendada = false;
+		for(listaVistas.iniciar_iterador(iteradorVistas);!iteradorVistas.finalIterador() && !pelicularecomendada; iteradorVistas.siguiente())
+		{
+			peliculaVista = iteradorVistas.obtenerDato();
+			if(peliculaNoVista->recomendarPelicula(peliculaVista))
+			{
+				listaRecomendados.insertar(peliculaNoVista);
+				pelicularecomendada = true;
+			}
+		}
+	}
 
 }
 
@@ -64,7 +82,7 @@ void cargarPeliculas(ifstream& archivoVistas, ifstream& archivoNoVistas){
 
     //FALTA ABRIR Y CERRAR LOS ARCHIVOS
 
-	while(!archivoVistas.oef()){
+	while(!archivoVistas.eof()){
 		getline(archivoVistas, titulo,'\n');
 		getline(archivoVistas, genero,'\n');
 		getline(archivoVistas, puntaje,'\n');
@@ -83,7 +101,7 @@ void cargarPeliculas(ifstream& archivoVistas, ifstream& archivoNoVistas){
 	}
 
 	// ¿Mismo código que archivoVistas?
-	while(!archivoNoVistas.oef()){
+	while(!archivoNoVistas.eof()){
 		getline(archivoNoVistas, titulo,'\n');
 		getline(archivoNoVistas, genero,'\n');
 		getline(archivoNoVistas, puntaje,'\n');
@@ -97,11 +115,12 @@ void cargarPeliculas(ifstream& archivoVistas, ifstream& archivoNoVistas){
 		Pelicula* pelicula = new Pelicula(titulo, genero,director,puntaje);
 		// Sugerencia: Imprimir "Nueva pelicula no vista cargada!"
 
-		if(puntaje >= 7) armarRecomendada(titulo, genero, director, actores);
+		//if(puntaje >= 7) armarRecomendada(titulo, genero, director, actores);
 	}
 }
 
 Archivo::~Archivo()
 {
+	listaRecomendados.varciar_lista();
     //dtor
 }
