@@ -22,7 +22,7 @@ public:
 	virtual ~Iterador();
 
 	// POST: setea los atributos.
-	void setearInicio(Nodo<Dato>** nodoInicial, unsigned* tamInicial);
+	void setInicio(Nodo<Dato>** nodoInicial, unsigned* tamInicial);
 
 
 	// POST: salta al siguiente elemento de la lista.
@@ -56,7 +56,7 @@ Iterador<Dato>::~Iterador()
 }
 
 template<class Dato>
-void Iterador<Dato>::setearInicio(Nodo<Dato>** inicial, unsigned* tamInicial)
+void Iterador<Dato>::setInicio(Nodo<Dato>** inicial, unsigned* tamInicial)
 {
 	actual = inicial;
 	tamLista = tamInicial;
@@ -66,7 +66,7 @@ template<class Dato>
 void Iterador<Dato>::siguiente()
 {
 	if(!finalIterador())
-		actual = (*actual)->get_puntero_siguiente();
+		actual = (*actual)->getPunteroSiguiente();
 }
 
 template<class Dato>
@@ -80,7 +80,7 @@ Dato Iterador<Dato>::obtenerDato()
 {
 	if(finalIterador())
 		return 0;
-	return (*actual)->get_dato();
+	return (*actual)->getDato();
 }
 
 template<class Dato>
@@ -90,8 +90,8 @@ Dato Iterador<Dato>::eliminarDato()
 		return 0;
 
 	Nodo<Dato>* nodoAuxiliar = *actual;
-	Dato datoAuxiliar = nodoAuxiliar->get_dato();
-	*actual = (*actual)->get_siguiente();
+	Dato datoAuxiliar = nodoAuxiliar->getDato();
+	*actual = (*actual)->getSiguiente();
 	delete nodoAuxiliar;
 
 	*tamLista = (*tamLista) -1;
@@ -104,8 +104,8 @@ void Iterador<Dato>::agregarDato(Dato datoAgregado)
 	Nodo<Dato>* nodoAuxiliar= new Nodo<Dato>(datoAgregado);
 	if(!finalIterador())
 	{
-		Nodo<Dato>* nodoSiguiente = (*actual)->get_siguiente();
-		nodoAuxiliar->set_siguiente(nodoSiguiente);
+		Nodo<Dato>* nodoSiguiente = (*actual)->getSiguiente();
+		nodoAuxiliar->setSiguiente(nodoSiguiente);
 	}
 	*tamLista = (*tamLista) +1;
 	*actual = nodoAuxiliar;

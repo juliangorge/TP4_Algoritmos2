@@ -44,7 +44,7 @@ string Pelicula::getActores()
 {
 	Iterador<string*> iteradorActores;
 	string* aux;
-    for(actores.iniciar_iterador(iteradorActores); !iteradorActores.finalIterador(); iteradorActores.siguiente())
+    for(actores.iniciarIterador(iteradorActores); !iteradorActores.finalIterador(); iteradorActores.siguiente())
     {
     	aux = iteradorActores.obtenerDato();
         cout <<*aux<<endl;
@@ -87,10 +87,10 @@ bool Pelicula::compararActores(Pelicula* peliculaAComparar)
 	Iterador<string*> otraPelicula;
 	string* actorEstaPelicula;
 	string* actorOtraPelicula;
-	for(actores.iniciar_iterador(estaPelicula);!estaPelicula.finalIterador(); estaPelicula.siguiente())
+	for(actores.iniciarIterador(estaPelicula);!estaPelicula.finalIterador(); estaPelicula.siguiente())
 	{
 		actorEstaPelicula = estaPelicula.obtenerDato();
-		for(peliculaAComparar->actores.iniciar_iterador(otraPelicula);!otraPelicula.finalIterador(); otraPelicula.siguiente())
+		for(peliculaAComparar->actores.iniciarIterador(otraPelicula);!otraPelicula.finalIterador(); otraPelicula.siguiente())
 		{
 			actorOtraPelicula = otraPelicula.obtenerDato();
 			if(*actorEstaPelicula == *actorOtraPelicula)

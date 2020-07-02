@@ -34,7 +34,7 @@ private:
      // PRE: lista creada
      // POST: devuelve verdadero si la lista es vacia
 
-     bool lista_vacia();
+     bool listaVacia();
 
      // PRE: lista creada
      // POST: agrega un dato (dentro de un nodo) al final
@@ -42,22 +42,22 @@ private:
 
      // PRE: - lista creada y no vacia
      // POST: devuelve el dato que esta en la posicion pos
-     Dato get_dato(unsigned pos);
+     Dato getDato(unsigned pos);
 
      // PRE: - lista creada y no vacia
      // POST: libera el nodo que esta en la posición pos
-     void del_dato(unsigned pos);
+     void delDato(unsigned pos);
 
      // PRE: Lista creada
      // POST: Devuelve tam (cantidad de nodos de la lista)
-     unsigned get_tam();
+     unsigned getTam();
 
      // POST: vacia la lista sin borrar los datos
-     void varciar_lista();
+     void vaciarLista();
 
      // PRE: iterador debe estar creado
      // POST: inicializa el iterador
-     void iniciar_iterador(Iterador<Dato>& iteradorLista);
+     void iniciarIterador(Iterador<Dato>& iteradorLista);
 };
 
 
@@ -73,13 +73,13 @@ Lista<Dato>::Lista()
 template<class Dato>
 Lista<Dato>::~Lista()
 {
-    while (!(this->lista_vacia()))
-        this->del_dato(1);
+    while (!(this->listaVacia()))
+        this->delDato(1);
 }
 
 
 template<class Dato>
-bool Lista<Dato>::lista_vacia()
+bool Lista<Dato>::listaVacia()
 {
     return(primero == 0);
 }
@@ -89,14 +89,14 @@ void Lista<Dato>::insertar(Dato d)
  {
     Nodo<Dato>* pnodo = new Nodo<Dato>(d);
     Nodo<Dato>* paux = primero;
-    if (this->lista_vacia()){
+    if (this->listaVacia()){
         primero = pnodo;
     }
     else{
-        while (paux->get_siguiente() != 0){
-            paux = paux->get_siguiente();
+        while (paux->getSiguiente() != 0){
+            paux = paux->getSiguiente();
         }
-        paux->set_siguiente(pnodo);
+        paux->setSiguiente(pnodo);
  }
  tam++;
 }
@@ -104,40 +104,40 @@ void Lista<Dato>::insertar(Dato d)
 
 
 template<class Dato>
-Dato Lista<Dato>::get_dato(unsigned pos)
+Dato Lista<Dato>::getDato(unsigned pos)
 {
     Nodo<Dato>* paux = primero;
 
     unsigned i = 1;
-    while (i < pos && paux->get_siguiente())
+    while (i < pos && paux->getSiguiente())
     {
-        paux = paux->get_siguiente();
+        paux = paux->getSiguiente();
         i++;
     }
 
-    return paux->get_dato();
+    return paux->getDato();
 }
 
 
 template<class Dato>
-void Lista<Dato>::del_dato(unsigned pos)
+void Lista<Dato>::delDato(unsigned pos)
 {
    Nodo<Dato>* paux = primero;
-    if (pos == 1 || !(primero->get_siguiente()))
+    if (pos == 1 || !(primero->getSiguiente()))
     {
-        primero = paux->get_siguiente();
+        primero = paux->getSiguiente();
     }
     else
     {
         unsigned i = 1;
         Nodo<Dato>* pant;
-        while (i < pos && paux->get_siguiente())
+        while (i < pos && paux->getSiguiente())
         {
             pant = paux;
-            paux = paux->get_siguiente();
+            paux = paux->getSiguiente();
             i++;
         }
-        pant->set_siguiente(paux->get_siguiente());
+        pant->setSiguiente(paux->getSiguiente());
     }
     delete paux;
     tam--;
@@ -145,27 +145,27 @@ void Lista<Dato>::del_dato(unsigned pos)
 
 
 template<class Dato>
-unsigned Lista<Dato>::get_tam()
+unsigned Lista<Dato>::getTam()
 {
     return tam;
 }
 
 template<class Dato>
-void Lista<Dato>::varciar_lista()
+void Lista<Dato>::vaciarLista()
 {
-    while (!(this->lista_vacia()))
+    while (!(this->listaVacia()))
     {
-    	primero->set_dato(0);
-        this->del_dato(1);
+    	primero->setDato(0);
+        this->delDato(1);
     }
 
 }
 
 
 template<class Dato>
-void Lista<Dato>::iniciar_iterador(Iterador<Dato>& iteradorLista)
+void Lista<Dato>::iniciarIterador(Iterador<Dato>& iteradorLista)
 {
-	iteradorLista.setearInicio(&primero, &tam);
+	iteradorLista.setInicio(&primero, &tam);
 }
 
 #endif // LISTA_TEMPLATE_H

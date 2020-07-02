@@ -24,21 +24,21 @@ class Nodo
 
      // PRE: el nodo tiene que estar creado
      // POST: El nodo queda con el dato d
-     void set_dato(Dato d);
+     void setDato(Dato d);
 
      // PRE: nodo creado
      // POST: devuelve el dato que contiene el nodo
-     Dato get_dato();
+     Dato getDato();
 
      // PRE: nodo creado
      // POST: el puntero al siguiente nodo apuntará a ps
-     void set_siguiente(Nodo* ps);
+     void setSiguiente(Nodo* ps);
 
      // PRE: nodo creado
      // POST: Devuelve el puntero al siguiente nodo
-     Nodo* get_siguiente();
+     Nodo* getSiguiente();
 
-     Nodo** get_puntero_siguiente();
+     Nodo** getPunteroSiguiente();
 };
 
 
@@ -61,33 +61,33 @@ Nodo<Dato>::~Nodo()
 }
 
 template<class Dato>
-void Nodo<Dato>::set_dato(Dato d)
+void Nodo<Dato>::setDato(Dato d)
 {
     dato = d; //EL dato es un puntero a objeto
     cout<<dato<<endl;
 }
 
 template<class Dato>
-Dato Nodo<Dato>::get_dato()
+Dato Nodo<Dato>::getDato()
 {
     return dato;
 }
 
 template<class Dato>
-void Nodo<Dato>::set_siguiente(Nodo* ps)
+void Nodo<Dato>::setSiguiente(Nodo* ps)
 {
     psig = ps;
 
 }
 
 template<class Dato>
-Nodo<Dato>* Nodo<Dato>::get_siguiente()
+Nodo<Dato>* Nodo<Dato>::getSiguiente()
 {
     return psig;
 }
 
 template<class Dato>
-Nodo<Dato>** Nodo<Dato>::get_puntero_siguiente()
+Nodo<Dato>** Nodo<Dato>::getPunteroSiguiente()
 {
     return &psig;
 }

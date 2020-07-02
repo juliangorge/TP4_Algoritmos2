@@ -16,11 +16,11 @@ void Archivo::armarRecomendada()
 	Pelicula* peliculaVista;
 	Pelicula* peliculaNoVista;
 	bool pelicularecomendada;
-	for(listaNoVistas.iniciar_iterador(iteradorNoVistas);!iteradorNoVistas.finalIterador(); iteradorNoVistas.siguiente())
+	for(listaNoVistas.iniciarIterador(iteradorNoVistas);!iteradorNoVistas.finalIterador(); iteradorNoVistas.siguiente())
 	{
 		peliculaNoVista = iteradorNoVistas.obtenerDato();
 		pelicularecomendada = false;
-		for(listaVistas.iniciar_iterador(iteradorVistas);!iteradorVistas.finalIterador() && !pelicularecomendada; iteradorVistas.siguiente())
+		for(listaVistas.iniciarIterador(iteradorVistas);!iteradorVistas.finalIterador() && !pelicularecomendada; iteradorVistas.siguiente())
 		{
 			peliculaVista = iteradorVistas.obtenerDato();
 			if(peliculaNoVista->recomendarPelicula(peliculaVista))
@@ -62,10 +62,10 @@ void Archivo::generarListas()
 
 void Archivo::mostrarse(Lista<Pelicula*> &lista)
 {
-    for(unsigned i = 0 ; i <= lista.get_tam ; i++)
+    for(unsigned i = 0 ; i <= lista.getTam ; i++)
     {
         //El dato es un puntero a pelicula
-        lista.get_dato(i)->mostrarPelicula();
+        lista.getDato(i)->mostrarPelicula();
     }
 }
 
@@ -74,53 +74,40 @@ void Archivo::mostrarse(Lista<Pelicula*> &lista)
 
 //PRE: Recibe un archivo txt
 //POST: Carga las peliculas a las listas
-void cargarPeliculas(ifstream& archivoVistas, ifstream& archivoNoVistas){
+void cargarPeliculas( Lista<Pelicula*> &lista , string rutaArchivo){
 
-	string titulo, genero,director, actores;
-	double puntaje;
-	string arrayActores[];
+	ifstream archivo;
+	archivo.open(rutaArchivo, fstream::in);
+	if(!archivo){
 
-    //FALTA ABRIR Y CERRAR LOS ARCHIVOS
+		string titulo, genero, director, actores;
+		double puntaje;
+		string arrayActores[];
 
-	while(!archivoVistas.eof()){
-		getline(archivoVistas, titulo,'\n');
-		getline(archivoVistas, genero,'\n');
-		getline(archivoVistas, puntaje,'\n');
-		getline(archivoVistas, director,'\n');
-		getline(archivoVistas, actores,'\n');
+		while(!archivo.eof()){
+			getline(archivoVistas, titulo,'\n');
+			getline(archivoVistas, genero,'\n');
+			getline(archivoVistas, puntaje,'\n');
+			getline(archivoVistas, director,'\n');
+			getline(archivoVistas, actores,'\n');
 
-        Pelicula* pelicula = new Pelicula(titulo, genero, director, puntaje,);
+	        Pelicula* pelicula = new Pelicula(titulo, genero, director, puntaje);
 
-		while(getline(actores, actor, ' ')){
-			//...
+			while(getline(actores, actor, ' ')){
+				pelicula->insertarActor(actor);
+			}
 		}
 
-
-
-		// Sugerencia: Imprimir "Nueva pelicula vista cargada!"
+		archivo.close();
+	}else{
+		cout << "No se pudo abrir el archivo" << endl;
 	}
 
-	// ¿Mismo código que archivoVistas?
-	while(!archivoNoVistas.eof()){
-		getline(archivoNoVistas, titulo,'\n');
-		getline(archivoNoVistas, genero,'\n');
-		getline(archivoNoVistas, puntaje,'\n');
-		getline(archivoNoVistas, director,'\n');
-		getline(archivoNoVistas, actores,'\n');
-
-		while(getline(actores, actor, ' ')){
-			//...
-		}
-
-		Pelicula* pelicula = new Pelicula(titulo, genero,director,puntaje);
-		// Sugerencia: Imprimir "Nueva pelicula no vista cargada!"
-
-		//if(puntaje >= 7) armarRecomendada(titulo, genero, director, actores);
-	}
+	//if(puntaje >= 7) armarRecomendada(titulo, genero, director, actores);
 }
 
 Archivo::~Archivo()
 {
-	listaRecomendados.varciar_lista();
+	listaRecomendados.vaciarLista();
     //dtor
 }
