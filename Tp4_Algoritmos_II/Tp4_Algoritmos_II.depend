@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1593728978 source:c:\users\itenet\documents\archivos de alejo\tp4_algoritmos2\tp4_algoritmos_ii\main.cpp
+	"Menu.h"
+
+1593641265 c:\users\itenet\documents\archivos de alejo\tp4_algoritmos2\tp4_algoritmos_ii\include\menu.h
+	<iostream>
+	"Archivo.h"
+
+1593642343 c:\users\itenet\documents\archivos de alejo\tp4_algoritmos2\tp4_algoritmos_ii\include\archivo.h
+	"Lista_Template.h"
+	"Pelicula.h"
+
+1593730242 c:\users\itenet\documents\archivos de alejo\tp4_algoritmos2\tp4_algoritmos_ii\include\lista_template.h
+	"Nodo_Template.h"
+	"Iterador.h"
+	<iostream>
+
+1593730242 c:\users\itenet\documents\archivos de alejo\tp4_algoritmos2\tp4_algoritmos_ii\include\nodo_template.h
+	<iostream>
+
+1593730242 c:\users\itenet\documents\archivos de alejo\tp4_algoritmos2\tp4_algoritmos_ii\include\iterador.h
+	"Nodo_Template.h"
+
+1593710279 c:\users\itenet\documents\archivos de alejo\tp4_algoritmos2\tp4_algoritmos_ii\include\pelicula.h
+	<string>
+	"Lista_Template.h"
+

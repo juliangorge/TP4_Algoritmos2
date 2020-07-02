@@ -52,17 +52,19 @@ Lista<Pelicula*> Archivo::getListaRecomendados()
 
 void Archivo::generarListas()
 {
+    Lista<Pelicula*> listaAux = getListaVistas();
+    Lista<Pelicula*> listaAux2 = getListaNoVistas();
     //CARGO LAS VISTAS
-    cargarPeliculas(getListaVistas(),archivoVistas);
+    cargarPeliculas(listaAux,archivoVistas);
 
     //CARGO LAS NO VISTAS
-    cargarPeliculas(getListaNoVistas(),archivoNoVistas);
+    cargarPeliculas(listaAux2,archivoNoVistas);
 
 }
 
-void Archivo::mostrarse(Lista<Pelicula*> &lista)
+void Archivo::mostrarse(Lista<Pelicula*>& lista)
 {
-    for(unsigned i = 0 ; i <= lista.getTam ; i++)
+    for(unsigned i = 1 ; i <= lista.getTam() ; i++)
     {
         //El dato es un puntero a pelicula
         lista.getDato(i)->mostrarPelicula();
@@ -71,34 +73,37 @@ void Archivo::mostrarse(Lista<Pelicula*> &lista)
 
 //HICE ESTAS FUNCIONES PARA NO REPETIR EL CODIGO DE CARGAR LAS PELICULAS
 
-void cargarPeliculas( Lista<Pelicula*> &lista , string rutaArchivo){
+
+//PRE: Recibe un archivo txt
+//POST: Carga las peliculas a las listas
+void cargarPeliculas( Lista<Pelicula*>& lista , string rutaArchivo){
 
 	ifstream archivo;
 	archivo.open(rutaArchivo, fstream::in);
+	if(!archivo){
 
-	if(archivo.fail()) {
-        throw ExcepcionLectura(archivo);
-    }
+		string titulo, genero, director, actores;
+		double puntaje;
+		string arrayActores[];
 
-	string titulo, genero, director, actores;
-	double puntaje;
-	string arrayActores[];
+		while(!archivo.eof()){
+			getline(archivoVistas, titulo,'\n');
+			getline(archivoVistas, genero,'\n');
+			getline(archivoVistas, puntaje,'\n');
+			getline(archivoVistas, director,'\n');
+			getline(archivoVistas, actores,'\n');
 
-	while(!archivo.eof()){
-		getline(archivoVistas, titulo,'\n');
-		getline(archivoVistas, genero,'\n');
-	    getline(archivoVistas, puntaje,'\n');
-		getline(archivoVistas, director,'\n');
-		getline(archivoVistas, actores,'\n');
+	        Pelicula* pelicula = new Pelicula(titulo, genero, director, puntaje);
 
-        Pelicula* pelicula = new Pelicula(titulo, genero, director, puntaje);
-
-		while(getline(actores, actor, ' ')){
-			pelicula->insertarActor(&actor);
+			while(getline(actores, actor, ' ')){
+				pelicula->insertarActor(&actor);
+			}
 		}
-	}
 
 		archivo.close();
+	}else{
+		cout << "No se pudo abrir el archivo" << endl;
+	}
 }
 
 Archivo::~Archivo()
