@@ -1,4 +1,4 @@
-#include"Menu.h
+#include"Menu.h"
 
 int main()
 {
@@ -14,21 +14,22 @@ int main()
     {
         switch(opcion)
         {
-        case OPCION_VISTAS:
+            case OPCION_VISTAS:
             menu.mostrarVistas();
-        }
-        case OPCION_NO_VISTAS:
+
+            case OPCION_NO_VISTAS :
             menu.mostrarNoVistas();
-        }
-        case OPCION_RECOMENDADAS:
-            menu.mostrarRecomendadas();
-        }
-        default:
+
+            case OPCION_RECOMENDADAS:
+            menu.mostrarRecomendacion();
+
+            default:
             cout << "Opcion no disponible"<<endl;
+        }
 
         //Volvemos a pedir una opcion
         cout << "Ingrese una opcion :"; cin >> opcion ;
-    };
+    }
 
     return 0;
 }
