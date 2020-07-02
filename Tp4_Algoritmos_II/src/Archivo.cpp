@@ -94,7 +94,7 @@ void cargarPeliculas( Lista<Pelicula*> &lista , string rutaArchivo){
 	        Pelicula* pelicula = new Pelicula(titulo, genero, director, puntaje);
 
 			while(getline(actores, actor, ' ')){
-				pelicula->insertarActor(actor);
+				pelicula->insertarActor(&actor);
 			}
 		}
 
@@ -102,8 +102,6 @@ void cargarPeliculas( Lista<Pelicula*> &lista , string rutaArchivo){
 	}else{
 		cout << "No se pudo abrir el archivo" << endl;
 	}
-
-	//if(puntaje >= 7) armarRecomendada(titulo, genero, director, actores);
 }
 
 Archivo::~Archivo()
