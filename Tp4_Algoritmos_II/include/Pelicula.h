@@ -3,7 +3,8 @@
 
 #include<string>
 
-#include"Lista_Template.h"
+#include "Lista_Template.h"
+#include "Iterador.h"
 
 class Pelicula
 {
@@ -14,16 +15,17 @@ class Pelicula
         string director;
         double puntaje;
 
-        Lista<string> actores;
+        Lista<string*> actores;
 
     public: //Metodos
 
         //Constructor
+        //PRE: puntaje debe etar comprendido entre 0 y 10
         Pelicula(string nombre, string genero, string director,double puntaje);
 
         //PRE: Lista de actores
         //POST: Inserta el actor a la lista
-        void insertarActor(string actor);
+        void insertarActor(string* actor);
 
         //PRE:
         //POS: Muestra los datos de la pelicula
@@ -46,8 +48,20 @@ class Pelicula
         double getPuntaje();
 
         //PRE: -
-        //POST: Devuelve todo los actores
+        //POST: Devuelve todos los actores
         string getActores();
+
+        // POST: devuelve true si es mayor o igual a 7
+        bool verificarPuntaje();
+
+        // POST: devuelve el true si el genero es el mismo
+        bool compararGenero(Pelicula* paliculaAComparar);
+
+        // POST: devuelve el true si el director es el mismo
+        bool compararDirector(Pelicula* paliculaAComparar);
+
+        // POST: devuelve el true si las peliculas comparten al menos 1 actor
+        bool compararActores(Pelicula* paliculaAComparar);
 
 };
 

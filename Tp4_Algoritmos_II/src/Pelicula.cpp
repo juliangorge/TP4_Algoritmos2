@@ -1,5 +1,6 @@
 #include "Pelicula.h"
 
+
 Pelicula::Pelicula(string nombre, string genero, string director , double puntaje)
 {
     //Atributos
@@ -11,7 +12,7 @@ Pelicula::Pelicula(string nombre, string genero, string director , double puntaj
 
 }
 
-void Pelicula ::insertarActor(string actor)
+void Pelicula ::insertarActor(string* actor)
 {
     //Inserto el actor en la lista de actores
     actores.insertar(actor);
@@ -40,9 +41,12 @@ double Pelicula::getPuntaje()
 
 string Pelicula::getActores()
 {
-    for(unsigned i = 1 ; i << actores.get_tam(); i++)
+	Iterador<string*> iteradorActores;
+	string* aux;
+    for(actores.iniciar_iterador(iteradorActores); !iteradorActores.finalIterador(); iteradorActores.siguiente())
     {
-        cout <<actores.get_dato(i)<<endl;
+    	aux = iteradorActores.obtenerDato();
+        cout <<*aux<<endl;
     }
 }
 
@@ -59,4 +63,38 @@ void Pelicula::mostrarPelicula()
 Pelicula::~Pelicula()
 {
 
+}
+
+bool Pelicula::verificarPuntaje()
+{
+	return puntaje >= 7;
+}
+
+bool Pelicula::compararGenero(Pelicula* paliculaAComparar)
+{
+	return genero == paliculaAComparar->genero;
+}
+
+bool Pelicula::compararDirector(Pelicula* paliculaAComparar)
+{
+	return director == paliculaAComparar->director;
+}
+
+bool Pelicula::compararActores(Pelicula* paliculaAComparar)
+{
+	Iterador<string*> estaPelicula;
+	Iterador<string*> otraPelicula;
+	string* actorEstaPelicula;
+	string* actorOtraPelicula;
+	for(actores.iniciar_iterador(estaPelicula);!estaPelicula.finalIterador(); estaPelicula.siguiente())
+	{
+		actorEstaPelicula = estaPelicula.obtenerDato();
+		for(paliculaAComparar->actores.iniciar_iterador(otraPelicula);!otraPelicula.finalIterador(); otraPelicula.siguiente())
+		{
+			actorOtraPelicula = otraPelicula.obtenerDato();
+			if(*actorEstaPelicula == *actorOtraPelicula)
+				return true;
+		}
+	}
+	return false;
 }
