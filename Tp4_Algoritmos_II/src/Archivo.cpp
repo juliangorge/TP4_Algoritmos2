@@ -52,17 +52,19 @@ Lista<Pelicula*> Archivo::getListaRecomendados()
 
 void Archivo::generarListas()
 {
+    Lista<Pelicula*> listaAux = getListaVistas();
+    Lista<Pelicula*> listaAux2 = getListaNoVistas();
     //CARGO LAS VISTAS
-    cargarPeliculas(getListaVistas(),archivoVistas);
+    cargarPeliculas(listaAux,archivoVistas);
 
     //CARGO LAS NO VISTAS
-    cargarPeliculas(getListaNoVistas(),archivoNoVistas);
+    cargarPeliculas(listaAux2,archivoNoVistas);
 
 }
 
-void Archivo::mostrarse(Lista<Pelicula*> &lista)
+void Archivo::mostrarse(Lista<Pelicula*>& lista)
 {
-    for(unsigned i = 0 ; i <= lista.getTam ; i++)
+    for(unsigned i = 1 ; i <= lista.getTam() ; i++)
     {
         //El dato es un puntero a pelicula
         lista.getDato(i)->mostrarPelicula();
@@ -74,7 +76,7 @@ void Archivo::mostrarse(Lista<Pelicula*> &lista)
 
 //PRE: Recibe un archivo txt
 //POST: Carga las peliculas a las listas
-void cargarPeliculas( Lista<Pelicula*> &lista , string rutaArchivo){
+void cargarPeliculas( Lista<Pelicula*>& lista , string rutaArchivo){
 
 	ifstream archivo;
 	archivo.open(rutaArchivo, fstream::in);
