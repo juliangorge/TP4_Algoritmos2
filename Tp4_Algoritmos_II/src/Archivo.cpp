@@ -53,11 +53,11 @@ Lista<Pelicula*> Archivo::getListaRecomendados()
 
 void Archivo::generarListas()
 {
-    //CARGO LAS VISTAS
-    cargarPeliculas(listaVistas, ARCHIVO_VISTAS);
+    Lista<Pelicula*> AuxVistas = getListaVistas();
+    Lista<Pelicula*> AuxNoVistas = getListaNoVistas();
 
-    //CARGO LAS NO VISTAS
-    cargarPeliculas(listaNoVistas, ARCHIVO_NO_VISTAS);
+    cargarPeliculas(AuxVistas, ARCHIVO_VISTAS);
+    cargarPeliculas(AuxNoVistas, ARCHIVO_NO_VISTAS);
 
 }
 
@@ -71,36 +71,44 @@ void Archivo::mostrarse(Lista<Pelicula*>& lista)
     }
 }
 
-//HICE ESTAS FUNCIONES PARA NO REPETIR EL CODIGO DE CARGAR LAS PELICULAS
+void Archivo::insertarActores (string actores, Pelicula* pelicula)
+{
+    string actor = "";
+    string* aux;
 
-void cargarPeliculas( Lista<Pelicula*>& lista , string rutaArchivo){
+    for (int i = 0; i < actores.length() ; ++i) {
+        actor += actores[i];
+        if (actores[i] == ' ' || i == (actores.length() - 1) ){
+            aux = new string(actor);
+            pelicula->insertarActor(aux);
+            actor = "";
+        }
+    }
+}
 
-	ifstream archivo;
-	archivo.open(rutaArchivo, fstream::in);
-	if(archivo.fail()) {
-        throw ExcepcionLectura(archivo);
+void Archivo::cargarPeliculas( Lista<Pelicula*>& lista , string rutaArchivo)
+{
+    string titulo, genero, director, puntajeString, actores;
+    double puntaje;
+
+    ifstream archivo;
+    archivo.open(rutaArchivo, fstream::in);
+    if(archivo.fail()) {
+        throw ExcepcionLectura(rutaArchivo);
         return;
     }
-	string titulo, genero, director, actores, actor, puntajeString;
-	double puntaje;
-	string arrayActores[];
 
 	while(!archivo.eof()){
-	    getline(archivo, titulo,'\n');
-	    getline(archivo, genero,'\n');
-	    getline(archivo, puntajeString,'\n');
-	    getline(archivo, director,'\n');
-	    getline(archivo, actores,'\n');
+	    getline(archivo, titulo);
+	    getline(archivo, genero);
+	    getline(archivo, puntajeString);
+	    getline(archivo, director);
+	    getline(archivo, actores);
 
 	    puntaje = stod(puntajeString);
 	    Pelicula* pelicula = new Pelicula(titulo, genero, director, puntaje);
 
-	    string* aux;
-	    while(getline(actores, actor, ' '))
-	    {
-	    	aux = new string(actor);
-	        pelicula->insertarActor(aux);
-	    }
+	    insertarActores(actores, pelicula);
 	}
 	archivo.close();
 }

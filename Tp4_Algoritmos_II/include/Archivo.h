@@ -57,6 +57,12 @@ class Archivo
         //Destructor
         ~Archivo();
 
+    private:
+
+        //PRE: recibe un string con todos los actores separados por un espacio
+        //POST: inserta cada actor en la pelicula
+        void insertarActores (string actores, Pelicula* pelicula);
+
 };
 
 #endif // ARCHIVO_H
