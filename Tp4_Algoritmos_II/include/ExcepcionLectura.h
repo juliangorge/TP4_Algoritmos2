@@ -13,7 +13,6 @@ class ExcepcionLectura: public exception {
 private:
 
 	string mensaje;
-    string archivo;
 
 public:
     //PRE: -
