@@ -48,7 +48,7 @@ class Pelicula
 
         //PRE: -
         //POST: Devuelve todos los actores
-        string getActores();
+        void mostrarActores();
 
         // POST: devuelve true si es mayor o igual a 7
         bool verificarPuntaje();

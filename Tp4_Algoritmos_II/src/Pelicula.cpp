@@ -40,7 +40,7 @@ double Pelicula::getPuntaje()
     return puntaje;
 }
 
-string Pelicula::getActores()
+void Pelicula::mostrarActores()
 {
 	Iterador<string*> iteradorActores;
 	string* aux;
@@ -58,7 +58,9 @@ void Pelicula::mostrarPelicula()
     cout<<"Nombre: "<<getNombre()<<endl;
     cout<<"Director: "<<getDirector()<<endl;
     cout<<"Puntaje: "<<getPuntaje()<<endl;
-    cout<<"Actores: \n"<<getActores()<<endl;
+    cout<<"Actores: \n";
+    mostrarActores();
+    cout<<endl;
 }
 
 Pelicula::~Pelicula()

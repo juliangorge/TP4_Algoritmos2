@@ -2,6 +2,7 @@
 #include <fstream>
 
 #include "Iterador.h"
+#include"ExcepcionLectura.h"
 
 Archivo::Archivo()
 {
@@ -62,10 +63,11 @@ void Archivo::generarListas()
 
 void Archivo::mostrarse(Lista<Pelicula*>& lista)
 {
-    for(unsigned i = 1 ; i <= lista.getTam() ; i++)
+	Iterador<Pelicula*> iteradorPeliculas;
+    for(lista.iniciarIterador(iteradorPeliculas); !iteradorPeliculas.finalIterador() ; iteradorPeliculas.siguiente())
     {
-        //El dato es un puntero a pelicula
-        lista.getDato(i)->mostrarPelicula();
+    	//El dato es un puntero a pelicula
+    	iteradorPeliculas.obtenerDato()->mostrarPelicula();
     }
 }
 
@@ -79,21 +81,25 @@ void cargarPeliculas( Lista<Pelicula*>& lista , string rutaArchivo){
         throw ExcepcionLectura(archivo);
         return;
     }
-	string titulo, genero, director, actores;
+	string titulo, genero, director, actores, actor, puntajeString;
 	double puntaje;
 	string arrayActores[];
 
 	while(!archivo.eof()){
-	    getline(archivoVistas, titulo,'\n');
-	    getline(archivoVistas, genero,'\n');
-	    getline(archivoVistas, puntaje,'\n');
-	    getline(archivoVistas, director,'\n');
-	    getline(archivoVistas, actores,'\n');
+	    getline(archivo, titulo,'\n');
+	    getline(archivo, genero,'\n');
+	    getline(archivo, puntajeString,'\n');
+	    getline(archivo, director,'\n');
+	    getline(archivo, actores,'\n');
 
+	    puntaje = stod(puntajeString);
 	    Pelicula* pelicula = new Pelicula(titulo, genero, director, puntaje);
 
-	    while(getline(actores, actor, ' ')){
-	        pelicula->insertarActor(&actor);
+	    string* aux;
+	    while(getline(actores, actor, ' '))
+	    {
+	    	aux = new string(actor);
+	        pelicula->insertarActor(aux);
 	    }
 	}
 	archivo.close();

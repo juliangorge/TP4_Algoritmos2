@@ -3,7 +3,7 @@
 
 #include"Lista_Template.h"
 #include"Pelicula.h"
-#include"ExcepcionLectura.h"
+
 
 const string ARCHIVO_VISTAS = "peliculas_vistas.txt";
 const string ARCHIVO_NO_VISTAS = "peliculas_no_vistas.txt";
