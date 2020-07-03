@@ -52,13 +52,11 @@ Lista<Pelicula*> Archivo::getListaRecomendados()
 
 void Archivo::generarListas()
 {
-    Lista<Pelicula*> listaAux = getListaVistas();
-    Lista<Pelicula*> listaAux2 = getListaNoVistas();
     //CARGO LAS VISTAS
-    cargarPeliculas(listaAux,archivoVistas);
+    cargarPeliculas(listaVistas, ARCHIVO_VISTAS);
 
     //CARGO LAS NO VISTAS
-    cargarPeliculas(listaAux2,archivoNoVistas);
+    cargarPeliculas(listaNoVistas, ARCHIVO_NO_VISTAS);
 
 }
 
@@ -73,37 +71,32 @@ void Archivo::mostrarse(Lista<Pelicula*>& lista)
 
 //HICE ESTAS FUNCIONES PARA NO REPETIR EL CODIGO DE CARGAR LAS PELICULAS
 
-
-//PRE: Recibe un archivo txt
-//POST: Carga las peliculas a las listas
 void cargarPeliculas( Lista<Pelicula*>& lista , string rutaArchivo){
 
 	ifstream archivo;
 	archivo.open(rutaArchivo, fstream::in);
-	if(!archivo){
+	if(archivo.fail()) {
+        throw ExcepcionLectura(archivo);
+        return;
+    }
+	string titulo, genero, director, actores;
+	double puntaje;
+	string arrayActores[];
 
-		string titulo, genero, director, actores;
-		double puntaje;
-		string arrayActores[];
+	while(!archivo.eof()){
+	    getline(archivoVistas, titulo,'\n');
+	    getline(archivoVistas, genero,'\n');
+	    getline(archivoVistas, puntaje,'\n');
+	    getline(archivoVistas, director,'\n');
+	    getline(archivoVistas, actores,'\n');
 
-		while(!archivo.eof()){
-			getline(archivoVistas, titulo,'\n');
-			getline(archivoVistas, genero,'\n');
-			getline(archivoVistas, puntaje,'\n');
-			getline(archivoVistas, director,'\n');
-			getline(archivoVistas, actores,'\n');
+	    Pelicula* pelicula = new Pelicula(titulo, genero, director, puntaje);
 
-	        Pelicula* pelicula = new Pelicula(titulo, genero, director, puntaje);
-
-			while(getline(actores, actor, ' ')){
-				pelicula->insertarActor(&actor);
-			}
-		}
-
-		archivo.close();
-	}else{
-		cout << "No se pudo abrir el archivo" << endl;
+	    while(getline(actores, actor, ' ')){
+	        pelicula->insertarActor(&actor);
+	    }
 	}
+	archivo.close();
 }
 
 Archivo::~Archivo()
