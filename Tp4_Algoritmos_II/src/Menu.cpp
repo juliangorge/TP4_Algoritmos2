@@ -14,6 +14,7 @@ void Menu::mostrarRecomendacion(){
     //Muestra  la lista de Recomendaciones
     listas.mostrarse(listaAux);
 
+    listaAux.vaciarLista(false);
 }
 void Menu::mostrarNoVistas()
 {
@@ -21,12 +22,15 @@ void Menu::mostrarNoVistas()
     //Muestra  la lista de no vistas
     listas.mostrarse(listaAux);
 
+    listaAux.vaciarLista(false);
 }
 void Menu::mostrarVistas()
 {
      Lista<Pelicula*> listaAux = listas.getListaVistas();
     //Muestra  la lista de vistas
     listas.mostrarse(listaAux);
+
+    listaAux.vaciarLista(false);
 }
 
 void Menu::cargarDatos()
