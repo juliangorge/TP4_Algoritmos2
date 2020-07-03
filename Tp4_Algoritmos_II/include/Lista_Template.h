@@ -26,6 +26,14 @@ private:
      // PRE: ninguna
      // POST: construye una lista vacia
     Lista();
+
+
+    // Constructor de copia
+    // PRE: La lista ingresada debe estar creada
+    // POST: construye una lista con los datos de una lista existente
+    Lista(const Lista<Dato>& listaACopiar);
+
+
      // Destructor
      // PRE: lista creada
      // POST: Libera todos los recursos de la lista
@@ -52,12 +60,21 @@ private:
      // POST: Devuelve tam (cantidad de nodos de la lista)
      unsigned getTam();
 
-     // POST: vacia la lista sin borrar los datos
-     void vaciarLista();
+     // POST: vacia la lista. si borrarDatos es verdadero borra los datos almacenados
+     void vaciarLista(bool borrarDatos);
 
      // PRE: iterador debe estar creado
      // POST: inicializa el iterador
      void iniciarIterador(Iterador<Dato>& iteradorLista);
+
+     // PRE: La lista ingresada debe estar creada
+     // POST: agrega los elementos de la lista ingresada
+     Lista<Dato>& operator+(const Lista<Dato>& listaACopiar);
+
+     // PRE: La lista ingresada debe estar creada
+     // POST: copia los de la lista ingresada. Si antes había datos guardados los borra.
+     Lista<Dato>& operator=(const Lista<Dato>& listaACopiar);
+
 };
 
 
@@ -71,10 +88,17 @@ Lista<Dato>::Lista()
 }
 
 template<class Dato>
+Lista<Dato>::Lista(const Lista<Dato>& listaACopiar)
+{
+    primero = 0 ;
+    tam = 0;
+    operator+(listaACopiar);
+}
+
+template<class Dato>
 Lista<Dato>::~Lista()
 {
-    while (!(this->listaVacia()))
-        this->delDato(1);
+	vaciarLista(true);
 }
 
 
@@ -151,12 +175,20 @@ unsigned Lista<Dato>::getTam()
 }
 
 template<class Dato>
-void Lista<Dato>::vaciarLista()
+void Lista<Dato>::vaciarLista(bool borrarDatos)
 {
-    while (!(this->listaVacia()))
+	if(borrarDatos)
+	{
+		while (!(this->listaVacia()))
+			this->delDato(1);
+	}
+	else
     {
-    	primero->setDato(0);
-        this->delDato(1);
+		while (!(this->listaVacia()))
+		{
+	    	primero->setDato(0);
+			this->delDato(1);
+		}
     }
 
 }
@@ -169,3 +201,31 @@ void Lista<Dato>::iniciarIterador(Iterador<Dato>& iteradorLista)
 }
 
 #endif // LISTA_TEMPLATE_H
+
+template<class Dato>
+Lista<Dato>& Lista<Dato>::operator+(const Lista<Dato>& listaACopiar)
+{
+	Iterador<Dato> estaLista;
+	Iterador<Dato> listaIngresada;
+	iniciarIterador(estaLista);
+	while(!estaLista.finalIterador())
+		estaLista.siguiente();
+
+	listaACopiar.iniciarIterador(listaIngresada);
+	while(!listaIngresada.finalIterador())
+	{
+		estaLista.agregarDato(listaIngresada.obtenerDato());
+		estaLista.siguiente();
+		listaIngresada.siguiente();
+	}
+	return *this;
+}
+
+template<class Dato>
+Lista<Dato>& Lista<Dato>::operator=(const Lista<Dato>& listaACopiar)
+{
+	vaciarLista(true);
+	operator+(listaACopiar);
+	return *this;
+}
+

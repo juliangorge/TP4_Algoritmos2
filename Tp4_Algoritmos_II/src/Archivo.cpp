@@ -115,6 +115,6 @@ void Archivo::cargarPeliculas( Lista<Pelicula*>& lista , string rutaArchivo)
 
 Archivo::~Archivo()
 {
-	listaRecomendados.vaciarLista();
+	listaRecomendados.vaciarLista(false);
     //dtor
 }
