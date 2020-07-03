@@ -4,10 +4,15 @@
 #ifndef TP4_ALGORITMOS2_EXCEPCIONLECTURA_H
 #define TP4_ALGORITMOS2_EXCEPCIONLECTURA_H
 
+#include <iostream>
+#include <exception>
+using namespace std;
+
 class ExcepcionLectura: public exception {
 
 private:
 
+	string mensaje;
     string archivo;
 
 public:

@@ -2,7 +2,7 @@
 // Created by tomas on 1/7/20.
 //
 #include "ExcepcionLectura.h"
-using namespace std;
+
 
 ExcepcionLectura::ExcepcionLectura (string archivo) throw()
 {
