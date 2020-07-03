@@ -9,21 +9,24 @@ Menu::Menu()
 //PRE -
 //POST: Muestra la lista de recomendacion
 void Menu::mostrarRecomendacion(){
+    Lista<Pelicula*> listaAux = listas.getListaRecomendados();
 
     //Muestra  la lista de Recomendaciones
-    listas.mostrarse(listas.getListaRecomendados());
+    listas.mostrarse(listaAux);
 
 }
 void Menu::mostrarNoVistas()
 {
+    Lista<Pelicula*> listaAux = listas.getListaNoVistas();
     //Muestra  la lista de no vistas
-    listas.mostrarse(listas.getListaNoVistas());
+    listas.mostrarse(listaAux);
 
 }
 void Menu::mostrarVistas()
 {
+     Lista<Pelicula*> listaAux = listas.getListaVistas();
     //Muestra  la lista de vistas
-    listas.mostrarse(listas.getListaVistas());
+    listas.mostrarse(listaAux);
 }
 
 void Menu::cargarDatos()

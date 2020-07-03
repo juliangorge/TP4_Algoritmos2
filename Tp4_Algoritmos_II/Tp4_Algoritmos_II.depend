@@ -1,12 +1,12 @@
 # depslib dependency file v1.0
-1593728978 source:c:\users\itenet\documents\archivos de alejo\tp4_algoritmos2\tp4_algoritmos_ii\main.cpp
+1593781754 source:c:\users\itenet\documents\archivos de alejo\tp4_algoritmos2\tp4_algoritmos_ii\main.cpp
 	"Menu.h"
 
 1593641265 c:\users\itenet\documents\archivos de alejo\tp4_algoritmos2\tp4_algoritmos_ii\include\menu.h
 	<iostream>
 	"Archivo.h"
 
-1593642343 c:\users\itenet\documents\archivos de alejo\tp4_algoritmos2\tp4_algoritmos_ii\include\archivo.h
+1593781754 c:\users\itenet\documents\archivos de alejo\tp4_algoritmos2\tp4_algoritmos_ii\include\archivo.h
 	"Lista_Template.h"
 	"Pelicula.h"
 
@@ -21,7 +21,20 @@
 1593730242 c:\users\itenet\documents\archivos de alejo\tp4_algoritmos2\tp4_algoritmos_ii\include\iterador.h
 	"Nodo_Template.h"
 
-1593710279 c:\users\itenet\documents\archivos de alejo\tp4_algoritmos2\tp4_algoritmos_ii\include\pelicula.h
+1593781754 c:\users\itenet\documents\archivos de alejo\tp4_algoritmos2\tp4_algoritmos_ii\include\pelicula.h
 	<string>
 	"Lista_Template.h"
+
+1593781754 source:c:\users\itenet\documents\archivos de alejo\tp4_algoritmos2\tp4_algoritmos_ii\src\archivo.cpp
+	"Archivo.h"
+	<fstream>
+	"Iterador.h"
+	"ExcepcionLectura.h"
+
+1593781754 c:\users\itenet\documents\archivos de alejo\tp4_algoritmos2\tp4_algoritmos_ii\include\excepcionlectura.h
+	<iostream>
+	<exception>
+
+1593794902 source:c:\users\itenet\documents\archivos de alejo\tp4_algoritmos2\tp4_algoritmos_ii\src\menu.cpp
+	"Menu.h"
 
