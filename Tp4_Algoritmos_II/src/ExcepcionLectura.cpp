@@ -9,7 +9,7 @@ ExcepcionLectura::ExcepcionLectura (string archivo) throw()
     this->mensaje = "Error en la lectura del archivo: '" + archivo + "'\n";
 }
 
-virtual const char* ExcepcionLectura::what() const throw()
+const char* ExcepcionLectura::what() const throw()
 {
     return mensaje.c_str();
 }

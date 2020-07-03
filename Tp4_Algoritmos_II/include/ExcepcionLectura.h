@@ -21,7 +21,7 @@ public:
 
     //PRE: -
     //POST: devuelve un mensaje describiendo la excepcion
-    virtual const char* what() const throw();
+    virtual const char* what() const throw() = 0;
 
 };
 

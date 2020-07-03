@@ -76,7 +76,7 @@ void Archivo::insertarActores (string actores, Pelicula* pelicula)
     string actor = "";
     string* aux;
 
-    for (int i = 0; i < actores.length() ; ++i) {
+    for (unsigned i= 0; i < actores.length() ; ++i) {
         actor += actores[i];
         if (actores[i] == ' ' || i == (actores.length() - 1) ){
             aux = new string(actor);
@@ -95,7 +95,7 @@ void Archivo::cargarPeliculas( Lista<Pelicula*>& lista , string rutaArchivo)
     archivo.open(rutaArchivo, fstream::in);
     if(archivo.fail()) {
         throw ExcepcionLectura(rutaArchivo);
-        return;
+        return ;
     }
 
 	while(!archivo.eof()){

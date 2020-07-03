@@ -63,10 +63,10 @@ void Pelicula::mostrarPelicula()
     cout<<endl;
 }
 
-Pelicula::~Pelicula()
+/*Pelicula::~Pelicula()
 {
 
-}
+}*/
 
 bool Pelicula::verificarPuntaje()
 {

@@ -31,10 +31,17 @@
 	"Iterador.h"
 	"ExcepcionLectura.h"
 
-1593781754 c:\users\itenet\documents\archivos de alejo\tp4_algoritmos2\tp4_algoritmos_ii\include\excepcionlectura.h
+1593803695 c:\users\itenet\documents\archivos de alejo\tp4_algoritmos2\tp4_algoritmos_ii\include\excepcionlectura.h
 	<iostream>
 	<exception>
 
 1593794902 source:c:\users\itenet\documents\archivos de alejo\tp4_algoritmos2\tp4_algoritmos_ii\src\menu.cpp
 	"Menu.h"
+
+1593803753 source:c:\users\itenet\documents\archivos de alejo\tp4_algoritmos2\tp4_algoritmos_ii\src\excepcionlectura.cpp
+	"ExcepcionLectura.h"
+
+1593803642 source:c:\users\itenet\documents\archivos de alejo\tp4_algoritmos2\tp4_algoritmos_ii\src\pelicula.cpp
+	"Pelicula.h"
+	"Iterador.h"
 
