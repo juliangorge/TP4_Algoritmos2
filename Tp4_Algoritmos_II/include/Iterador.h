@@ -31,6 +31,9 @@ public:
 	// POST: devuelve true si es el fonal de la lista.
 	bool finalIterador();
 
+	// POST: apunta al final de la lista que se esta iterando
+	void apuntarFinalLista();
+
 	// POST: devuelve el dato de la posicion actual.
 	Dato obtenerDato();
 
@@ -73,6 +76,15 @@ template<class Dato>
 bool Iterador<Dato>::finalIterador()
 {
 	return (*actual) == 0;
+}
+
+template<class Dato>
+void Iterador<Dato>::apuntarFinalLista()
+{
+	while(!finalIterador())
+	{
+		siguiente();
+	}
 }
 
 template<class Dato>

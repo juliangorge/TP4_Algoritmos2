@@ -207,8 +207,7 @@ Lista<Dato>& Lista<Dato>::operator+(Lista<Dato>& listaACopiar)
 	Iterador<Dato> estaLista;
 	Iterador<Dato> listaIngresada;
 	iniciarIterador(estaLista);
-	while(!estaLista.finalIterador())
-		estaLista.siguiente();
+	estaLista.apuntarFinalLista();
 
 	listaACopiar.iniciarIterador(listaIngresada);
 	while(!listaIngresada.finalIterador())
