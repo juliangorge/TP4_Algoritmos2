@@ -200,7 +200,6 @@ void Lista<Dato>::iniciarIterador(Iterador<Dato>& iteradorLista)
 	iteradorLista.setInicio(&primero, &tam);
 }
 
-#endif // LISTA_TEMPLATE_H
 
 template<class Dato>
 Lista<Dato>& Lista<Dato>::operator+(const Lista<Dato>& listaACopiar)
@@ -229,3 +228,5 @@ Lista<Dato>& Lista<Dato>::operator=(const Lista<Dato>& listaACopiar)
 	return *this;
 }
 
+
+#endif // LISTA_TEMPLATE_H
