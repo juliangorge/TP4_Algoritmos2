@@ -64,7 +64,7 @@ template<class Dato>
 void Nodo<Dato>::setDato(Dato d)
 {
     dato = d; //EL dato es un puntero a objeto
-    cout<<dato<<endl;
+    //cout<<dato<<endl;
 }
 
 template<class Dato>

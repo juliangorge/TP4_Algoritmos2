@@ -31,7 +31,7 @@ private:
     // Constructor de copia
     // PRE: La lista ingresada debe estar creada
     // POST: construye una lista con los datos de una lista existente
-    Lista(const Lista<Dato>& listaACopiar);
+    Lista(Lista<Dato>& listaACopiar);
 
 
      // Destructor
@@ -69,11 +69,11 @@ private:
 
      // PRE: La lista ingresada debe estar creada
      // POST: agrega los elementos de la lista ingresada
-     Lista<Dato>& operator+(const Lista<Dato>& listaACopiar);
+     Lista<Dato>& operator+(Lista<Dato>& listaACopiar);
 
      // PRE: La lista ingresada debe estar creada
      // POST: copia los de la lista ingresada. Si antes había datos guardados los borra.
-     Lista<Dato>& operator=(const Lista<Dato>& listaACopiar);
+     Lista<Dato>& operator=(Lista<Dato>& listaACopiar);
 
 };
 
@@ -88,7 +88,7 @@ Lista<Dato>::Lista()
 }
 
 template<class Dato>
-Lista<Dato>::Lista(const Lista<Dato>& listaACopiar)
+Lista<Dato>::Lista(Lista<Dato>& listaACopiar)
 {
     primero = 0 ;
     tam = 0;
@@ -203,7 +203,7 @@ void Lista<Dato>::iniciarIterador(Iterador<Dato>& iteradorLista)
 #endif // LISTA_TEMPLATE_H
 
 template<class Dato>
-Lista<Dato>& Lista<Dato>::operator+(const Lista<Dato>& listaACopiar)
+Lista<Dato>& Lista<Dato>::operator+(Lista<Dato>& listaACopiar)
 {
 	Iterador<Dato> estaLista;
 	Iterador<Dato> listaIngresada;
@@ -222,7 +222,7 @@ Lista<Dato>& Lista<Dato>::operator+(const Lista<Dato>& listaACopiar)
 }
 
 template<class Dato>
-Lista<Dato>& Lista<Dato>::operator=(const Lista<Dato>& listaACopiar)
+Lista<Dato>& Lista<Dato>::operator=(Lista<Dato>& listaACopiar)
 {
 	vaciarLista(true);
 	operator+(listaACopiar);
