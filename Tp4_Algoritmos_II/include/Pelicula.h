@@ -64,7 +64,7 @@ class Pelicula
 
         // POST: devulve true si el atributo puntaje de esta pelicula es mayor a 7
         // o si las peliculas comparten género y comparten o el director o algún actor
-        bool recomendarPelicula(Pelicula* paliculaAComparar);
+        bool recomendarPorComparacion(Pelicula* paliculaAComparar);
 
 };
 

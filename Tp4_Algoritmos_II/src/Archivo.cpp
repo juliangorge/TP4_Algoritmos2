@@ -20,14 +20,20 @@ void Archivo::armarRecomendada()
 	for(listaNoVistas.iniciarIterador(iteradorNoVistas);!iteradorNoVistas.finalIterador(); iteradorNoVistas.siguiente())
 	{
 		peliculaNoVista = iteradorNoVistas.obtenerDato();
-		pelicularecomendada = false;
-		for(listaVistas.iniciarIterador(iteradorVistas);!iteradorVistas.finalIterador() && !pelicularecomendada; iteradorVistas.siguiente())
+		if(peliculaNoVista->verificarPuntaje())
+			listaRecomendados.insertar(peliculaNoVista);
+		else
 		{
-			peliculaVista = iteradorVistas.obtenerDato();
-			if(peliculaNoVista->recomendarPelicula(peliculaVista))
+			pelicularecomendada = false;
+			for(listaVistas.iniciarIterador(iteradorVistas);!iteradorVistas.finalIterador() && !pelicularecomendada; iteradorVistas.siguiente())
 			{
-				listaRecomendados.insertar(peliculaNoVista);
-				pelicularecomendada = true;
+				peliculaVista = iteradorVistas.obtenerDato();
+
+				if(peliculaNoVista->recomendarPorComparacion(peliculaVista))
+				{
+					listaRecomendados.insertar(peliculaNoVista);
+					pelicularecomendada = true;
+				}
 			}
 		}
 	}

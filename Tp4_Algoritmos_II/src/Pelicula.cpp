@@ -102,10 +102,8 @@ bool Pelicula::compararActores(Pelicula* peliculaAComparar)
 	return false;
 }
 
-bool Pelicula::recomendarPelicula(Pelicula* peliculaAComparar)
+bool Pelicula::recomendarPorComparacion(Pelicula* peliculaAComparar)
 {
-	if (verificarPuntaje())
-		return true;
 	if (!compararGenero(peliculaAComparar))
 		return false;
 	if (compararDirector(peliculaAComparar))
