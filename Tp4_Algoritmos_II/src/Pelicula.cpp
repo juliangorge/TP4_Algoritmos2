@@ -13,6 +13,19 @@ Pelicula::Pelicula(string nombre, string genero, string director , double puntaj
 
 }
 
+bool Pelicula::buscarActorEnPelicula(string* actor, Pelicula* pelicula)
+{
+	Iterador<string*> otraPelicula;
+	string* actorOtraPelicula;
+	for(pelicula->actores.iniciarIterador(otraPelicula);!otraPelicula.finalIterador(); otraPelicula.siguiente())
+	{
+		actorOtraPelicula = otraPelicula.obtenerDato();
+		if(*actor == *actorOtraPelicula)
+			return true;
+	}
+	return false;
+}
+
 void Pelicula ::insertarActor(string* actor)
 {
     //Inserto el actor en la lista de actores
@@ -86,18 +99,12 @@ bool Pelicula::compararDirector(Pelicula* peliculaAComparar)
 bool Pelicula::compararActores(Pelicula* peliculaAComparar)
 {
 	Iterador<string*> estaPelicula;
-	Iterador<string*> otraPelicula;
 	string* actorEstaPelicula;
-	string* actorOtraPelicula;
 	for(actores.iniciarIterador(estaPelicula);!estaPelicula.finalIterador(); estaPelicula.siguiente())
 	{
 		actorEstaPelicula = estaPelicula.obtenerDato();
-		for(peliculaAComparar->actores.iniciarIterador(otraPelicula);!otraPelicula.finalIterador(); otraPelicula.siguiente())
-		{
-			actorOtraPelicula = otraPelicula.obtenerDato();
-			if(*actorEstaPelicula == *actorOtraPelicula)
-				return true;
-		}
+		if(buscarActorEnPelicula(actorEstaPelicula, peliculaAComparar))
+			return true;
 	}
 	return false;
 }

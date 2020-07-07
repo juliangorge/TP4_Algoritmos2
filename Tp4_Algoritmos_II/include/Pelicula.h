@@ -16,6 +16,9 @@ class Pelicula
 
         Lista<string*> actores;
 
+        //POST: verifica si un actor es parte de una pelicula. Devueve true en caso afirmativo
+        bool buscarActorEnPelicula(string* actor, Pelicula* pelicula);
+
     public: //Metodos
 
         //Constructor
