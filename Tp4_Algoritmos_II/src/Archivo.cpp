@@ -9,32 +9,41 @@ Archivo::Archivo()
 
 }
 
+bool Archivo::recomedarPelicula(Pelicula* peliculaNoVista)
+{
+	Iterador<Pelicula*> iteradorVistas;
+	Pelicula* peliculaVista;
+	if(peliculaNoVista->verificarPuntaje())
+				return true;
+	else
+	{
+		for(listaVistas.iniciarIterador(iteradorVistas);!iteradorVistas.finalIterador(); iteradorVistas.siguiente())
+		{
+			peliculaVista = iteradorVistas.obtenerDato();
+			if(peliculaNoVista->recomendarPorComparacion(peliculaVista))
+				return true;
+		}
+	}
+	return false;
+}
+
 //PRE: Peliculas vistas y no vistas ya cargadas
 void Archivo::armarRecomendada()
 {
-	Iterador<Pelicula*> iteradorVistas;
 	Iterador<Pelicula*> iteradorNoVistas;
-	Pelicula* peliculaVista;
+	Iterador<Pelicula*> iteradorRecomendadas;
 	Pelicula* peliculaNoVista;
-	bool pelicularecomendada;
+
+	listaRecomendados.iniciarIterador(iteradorRecomendadas);
+	iteradorRecomendadas.apuntarFinalLista();
+
 	for(listaNoVistas.iniciarIterador(iteradorNoVistas);!iteradorNoVistas.finalIterador(); iteradorNoVistas.siguiente())
 	{
 		peliculaNoVista = iteradorNoVistas.obtenerDato();
-		if(peliculaNoVista->verificarPuntaje())
-			listaRecomendados.insertar(peliculaNoVista);
-		else
+		if(recomedarPelicula(peliculaNoVista))
 		{
-			pelicularecomendada = false;
-			for(listaVistas.iniciarIterador(iteradorVistas);!iteradorVistas.finalIterador() && !pelicularecomendada; iteradorVistas.siguiente())
-			{
-				peliculaVista = iteradorVistas.obtenerDato();
-
-				if(peliculaNoVista->recomendarPorComparacion(peliculaVista))
-				{
-					listaRecomendados.insertar(peliculaNoVista);
-					pelicularecomendada = true;
-				}
-			}
+			iteradorRecomendadas.agregarDato(peliculaNoVista);
+			iteradorRecomendadas.siguiente();
 		}
 	}
 

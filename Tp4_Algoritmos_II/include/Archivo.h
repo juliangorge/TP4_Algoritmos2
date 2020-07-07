@@ -19,6 +19,8 @@ class Archivo
         Lista<Pelicula*> listaNoVistas ;
         Lista<Pelicula*> listaRecomendados ;
 
+        //POST: compara una pelicula con las peliculas de la lista de vistas. Devuelve true si la recomienda
+        bool recomedarPelicula(Pelicula* peliculaNoVista);
     public:
 
         //Constructor
