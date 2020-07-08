@@ -99,12 +99,12 @@ bool Pelicula::compararDirector(Pelicula* peliculaAComparar)
 
 bool Pelicula::compararActores(Pelicula* peliculaAComparar)
 {
-	Iterador<string*> estaPelicula;
-	string* actorEstaPelicula;
-	for(actores.iniciarIterador(estaPelicula); !estaPelicula.finalIterador(); estaPelicula.siguiente())
+	Iterador<string*> peliculaActual;
+	string* actorPeliculaActual;
+	for(actores.iniciarIterador(peliculaActual); !peliculaActual.finalIterador(); peliculaActual.siguiente())
 	{
-		actorEstaPelicula = estaPelicula.obtenerDato();
-		if(buscarActorEnPelicula(actorEstaPelicula, peliculaAComparar))
+		actorPeliculaActual = peliculaActual.obtenerDato();
+		if(buscarActorEnPelicula(actorPeliculaActual, peliculaAComparar))
 			return true;
 	}
 	return false;
