@@ -15,9 +15,9 @@ class Archivo
     private:
 
         //Listas cuyo tipo de dato es un puntero a una pelicula.
-        Lista<Pelicula*> listaVistas ;
-        Lista<Pelicula*> listaNoVistas ;
-        Lista<Pelicula*> listaRecomendados ;
+        Lista<Pelicula*> listaVistas;
+        Lista<Pelicula*> listaNoVistas;
+        Lista<Pelicula*> listaRecomendados;
 
         //POST: compara una pelicula con las peliculas de la lista de vistas. Devuelve true si la recomienda
         bool recomedarPelicula(Pelicula* peliculaNoVista);
@@ -50,7 +50,7 @@ class Archivo
 
         //PRE: Recibe una lista y una ruta de tipo string archivo txt
         //POST: Carga las peliculas a las listas
-        void cargarPeliculas( Lista<Pelicula*> &lista , string rutaArchivo);
+        void cargarPeliculas(Lista<Pelicula*> &lista, string rutaArchivo);
 
         //PRE: Recibe la lista a mostrar
         //POST: Muestra TODOS los elementos de la lista
@@ -63,7 +63,7 @@ class Archivo
 
         //PRE: recibe un string con todos los actores separados por un espacio
         //POST: inserta cada actor en la pelicula
-        void insertarActores (string actores, Pelicula* pelicula);
+        void insertarActores(string actores, Pelicula* pelicula);
 
 };
 

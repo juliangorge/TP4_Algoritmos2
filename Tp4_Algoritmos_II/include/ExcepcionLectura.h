@@ -17,7 +17,7 @@ private:
 public:
     //PRE: -
     //POST: Construye la excepcion con el nombre del archivo
-    ExcepcionLectura (string archivo) throw();
+    ExcepcionLectura(string archivo) throw();
 
     //PRE: -
     //POST: devuelve un mensaje describiendo la excepcion

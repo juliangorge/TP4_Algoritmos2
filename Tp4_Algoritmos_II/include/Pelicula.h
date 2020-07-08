@@ -23,7 +23,7 @@ class Pelicula
 
         //Constructor
         //PRE: puntaje debe etar comprendido entre 0 y 10
-        Pelicula(string nombre, string genero, string director,double puntaje);
+        Pelicula(string nombre, string genero, string director, double puntaje);
 
         //PRE: Lista de actores
         //POST: Inserta el actor a la lista

@@ -13,8 +13,9 @@ bool Archivo::recomedarPelicula(Pelicula* peliculaNoVista)
 {
 	Iterador<Pelicula*> iteradorVistas;
 	Pelicula* peliculaVista;
-	if(peliculaNoVista->verificarPuntaje())
-				return true;
+	if(peliculaNoVista->verificarPuntaje()){
+		return true;
+	}
 	else
 	{
 		for(listaVistas.iniciarIterador(iteradorVistas);!iteradorVistas.finalIterador(); iteradorVistas.siguiente())
@@ -79,7 +80,7 @@ void Archivo::generarListas()
 void Archivo::mostrarse(Lista<Pelicula*>& lista)
 {
 	Iterador<Pelicula*> iteradorPeliculas;
-    for(lista.iniciarIterador(iteradorPeliculas); !iteradorPeliculas.finalIterador() ; iteradorPeliculas.siguiente())
+    for(lista.iniciarIterador(iteradorPeliculas); !iteradorPeliculas.finalIterador(); iteradorPeliculas.siguiente())
     {
     	//El dato es un puntero a pelicula
     	iteradorPeliculas.obtenerDato()->mostrarPelicula();

@@ -5,7 +5,7 @@ int main()
     Menu menu;
     int opcion;
 
-    //Cargariamos los datos
+    //Cargamos los datos
     menu.cargarDatos();
 
     menu.mostrarOpciones();

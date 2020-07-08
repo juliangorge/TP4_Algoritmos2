@@ -17,7 +17,7 @@ bool Pelicula::buscarActorEnPelicula(string* actor, Pelicula* pelicula)
 {
 	Iterador<string*> otraPelicula;
 	string* actorOtraPelicula;
-	for(pelicula->actores.iniciarIterador(otraPelicula);!otraPelicula.finalIterador(); otraPelicula.siguiente())
+	for(pelicula->actores.iniciarIterador(otraPelicula); !otraPelicula.finalIterador(); otraPelicula.siguiente())
 	{
 		actorOtraPelicula = otraPelicula.obtenerDato();
 		if(*actor == *actorOtraPelicula)
@@ -100,7 +100,7 @@ bool Pelicula::compararActores(Pelicula* peliculaAComparar)
 {
 	Iterador<string*> estaPelicula;
 	string* actorEstaPelicula;
-	for(actores.iniciarIterador(estaPelicula);!estaPelicula.finalIterador(); estaPelicula.siguiente())
+	for(actores.iniciarIterador(estaPelicula); !estaPelicula.finalIterador(); estaPelicula.siguiente())
 	{
 		actorEstaPelicula = estaPelicula.obtenerDato();
 		if(buscarActorEnPelicula(actorEstaPelicula, peliculaAComparar))
