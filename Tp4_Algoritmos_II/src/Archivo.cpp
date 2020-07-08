@@ -18,7 +18,7 @@ bool Archivo::recomedarPelicula(Pelicula* peliculaNoVista)
 	}
 	else
 	{
-		for(listaVistas.iniciarIterador(iteradorVistas);!iteradorVistas.finalIterador(); iteradorVistas.siguiente())
+		for(listaVistas.iniciarIterador(iteradorVistas); !iteradorVistas.finalIterador(); iteradorVistas.siguiente())
 		{
 			peliculaVista = iteradorVistas.obtenerDato();
 			if(peliculaNoVista->recomendarPorComparacion(peliculaVista))
@@ -38,7 +38,7 @@ void Archivo::armarRecomendada()
 	listaRecomendados.iniciarIterador(iteradorRecomendadas);
 	iteradorRecomendadas.apuntarFinalLista();
 
-	for(listaNoVistas.iniciarIterador(iteradorNoVistas);!iteradorNoVistas.finalIterador(); iteradorNoVistas.siguiente())
+	for(listaNoVistas.iniciarIterador(iteradorNoVistas); !iteradorNoVistas.finalIterador(); iteradorNoVistas.siguiente())
 	{
 		peliculaNoVista = iteradorNoVistas.obtenerDato();
 		if(recomedarPelicula(peliculaNoVista))
@@ -50,7 +50,7 @@ void Archivo::armarRecomendada()
 
 }
 
-//GETTERS DE LAS LISTAS (DEVUELVEN LA LISTA PARA MANEJAR)
+// GETTERS DE LAS LISTAS (DEVUELVEN LA LISTA PARA MANEJAR)
 
 Lista<Pelicula*> Archivo::getListaNoVistas()
 {
@@ -105,7 +105,6 @@ void Archivo::insertarActores (string actores, Pelicula* pelicula)
 void Archivo::cargarPeliculas( Lista<Pelicula*>& lista , string rutaArchivo)
 {
     string titulo, genero, director, puntajeString, actores;
-    double puntaje;
 
     ifstream archivo;
     archivo.open(rutaArchivo, fstream::in);
@@ -121,8 +120,7 @@ void Archivo::cargarPeliculas( Lista<Pelicula*>& lista , string rutaArchivo)
 	    getline(archivo, director);
 	    getline(archivo, actores);
 
-	    puntaje = stod(puntajeString);
-	    Pelicula* pelicula = new Pelicula(titulo, genero, director, puntaje);
+	    Pelicula* pelicula = new Pelicula(titulo, genero, director, stod(puntajeString));
 
 	    insertarActores(actores, pelicula);
 	}

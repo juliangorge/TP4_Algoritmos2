@@ -10,7 +10,6 @@ Pelicula::Pelicula(string nombre, string genero, string director , double puntaj
     this->director = director;
     this->puntaje  = puntaje;
 
-
 }
 
 bool Pelicula::buscarActorEnPelicula(string* actor, Pelicula* pelicula)
@@ -63,7 +62,6 @@ void Pelicula::mostrarActores()
         cout <<*aux<<endl;
     }
 }
-
 
 void Pelicula::mostrarPelicula()
 {
