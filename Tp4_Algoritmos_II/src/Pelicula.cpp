@@ -68,12 +68,13 @@ void Pelicula::mostrarActores()
 void Pelicula::mostrarPelicula()
 {
     //Muestra las peliculas
-    cout<<"Nombre: "<<getNombre()<<endl;
-    cout<<"Director: "<<getDirector()<<endl;
-    cout<<"Puntaje: "<<getPuntaje()<<endl;
-    cout<<"Actores: \n";
+    cout << "Nombre: " << getNombre() << endl;
+    cout << "Director: " << getDirector() << endl;
+    cout << "Puntaje: " << getPuntaje() << endl;
+    cout << "Actores: \n";
+
     mostrarActores();
-    cout<<endl;
+    cout << endl;
 }
 
 /*Pelicula::~Pelicula()

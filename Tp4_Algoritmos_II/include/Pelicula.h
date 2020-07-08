@@ -57,17 +57,17 @@ class Pelicula
         bool verificarPuntaje();
 
         // POST: devuelve el true si el genero es el mismo
-        bool compararGenero(Pelicula* paliculaAComparar);
+        bool compararGenero(Pelicula* peliculaAComparar);
 
         // POST: devuelve el true si el director es el mismo
-        bool compararDirector(Pelicula* paliculaAComparar);
+        bool compararDirector(Pelicula* peliculaAComparar);
 
         // POST: devuelve el true si las peliculas comparten al menos 1 actor
-        bool compararActores(Pelicula* paliculaAComparar);
+        bool compararActores(Pelicula* peliculaAComparar);
 
         // POST: devulve true si el atributo puntaje de esta pelicula es mayor a 7
         // o si las peliculas comparten género y comparten o el director o algún actor
-        bool recomendarPorComparacion(Pelicula* paliculaAComparar);
+        bool recomendarPorComparacion(Pelicula* peliculaAComparar);
 
 };
 
