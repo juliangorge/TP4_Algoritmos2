@@ -24,22 +24,29 @@ public:
 	// POST: setea los atributos.
 	void setInicio(Nodo<Dato>** nodoInicial, unsigned* tamInicial);
 
+	// POST: devuelve true si el iterador esta asociado a una lista
+	bool iteradorInicializado();
 
+	// PRE: el iterador debe estar inicializado
 	// POST: salta al siguiente elemento de la lista.
 	void siguiente();
 
-	// POST: devuelve true si es el fonal de la lista.
+	// POST: devuelve true si es el final de la lista o si el iterador no esta inicializado
 	bool finalIterador();
 
+	// PRE: el iterador debe estar inicializado
 	// POST: apunta al final de la lista que se esta iterando
 	void apuntarFinalLista();
 
+	// PRE: el iterador debe estar inicializado
 	// POST: devuelve el dato de la posicion actual.
 	Dato obtenerDato();
 
+	// PRE: el iterador debe estar inicializado
 	// POST: devuelve el dato de la posicion actual y lo elimina de la lista.
 	Dato eliminarDato();
 
+	// PRE: el iterador debe estar inicializado
 	// POST: agrega un dato ANTES del dato actual. Si no quedan más datos lo agrega al final.
 	void agregarDato(Dato datoAgregado);
 };
@@ -66,6 +73,12 @@ void Iterador<Dato>::setInicio(Nodo<Dato>** inicial, unsigned* tamInicial)
 }
 
 template<class Dato>
+bool Iterador<Dato>::iteradorInicializado()
+{
+	return actual != 0;
+}
+
+template<class Dato>
 void Iterador<Dato>::siguiente()
 {
 	if(!finalIterador())
@@ -75,6 +88,8 @@ void Iterador<Dato>::siguiente()
 template<class Dato>
 bool Iterador<Dato>::finalIterador()
 {
+	if(!iteradorInicializado())
+		return true;
 	return (*actual) == 0;
 }
 
@@ -113,6 +128,8 @@ Dato Iterador<Dato>::eliminarDato()
 template<class Dato>
 void Iterador<Dato>::agregarDato(Dato datoAgregado)
 {
+	if(!iteradorInicializado())
+		return;
 	Nodo<Dato>* nodoAuxiliar= new Nodo<Dato>(datoAgregado);
 	if(!finalIterador())
 	{
