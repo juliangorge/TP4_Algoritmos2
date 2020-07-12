@@ -1,15 +1,17 @@
-//
-// Created by tomas on 1/7/20.
-//
 #include "ExcepcionLectura.h"
 
-
-ExcepcionLectura::ExcepcionLectura (string archivo) throw()
+ExcepcionLectura::ExcepcionLectura(string archivo) throw()
 {
     this->mensaje = "Error en la lectura del archivo: '" + archivo + "'\n";
 }
 
+ExcepcionLectura::~ExcepcionLectura() throw()
+{
+	//dtor
+}
+
+
 const char* ExcepcionLectura::what() const throw()
 {
-    return mensaje.c_str();
+	return "Error: división por cero...";
 }

@@ -1,8 +1,8 @@
-#include "Archivo.h"
 #include <fstream>
 
+#include "Archivo.h"
 #include "Iterador.h"
-#include"ExcepcionLectura.h"
+#include "ExcepcionLectura.h"
 
 Archivo::Archivo()
 {
@@ -39,7 +39,6 @@ bool Archivo::crearArchivoVistas()
     return false;
 }
 
-//PRE: Peliculas vistas y no vistas ya cargadas
 void Archivo::armarRecomendada()
 {
 	Iterador<Pelicula*> iteradorNoVistas;
@@ -134,14 +133,13 @@ void Archivo::cargarPeliculasVistas()
 
 }
 
-
 void Archivo::cargarPeliculasNoVistas()
 {
     ifstream archivoNoVistas;
     archivoNoVistas.open(ARCHIVO_NO_VISTAS, fstream::in);
-    if(archivoNoVistas.fail()) {
+    if(archivoNoVistas.fail()){
         throw ExcepcionLectura(ARCHIVO_NO_VISTAS);
-        return ;
+        return;
     }
 
     cargarPeliculas(listaNoVistas, archivoNoVistas);

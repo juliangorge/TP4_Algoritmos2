@@ -1,8 +1,5 @@
-//
-// Created by tomas on 1/7/20.
-//
-#ifndef TP4_ALGORITMOS2_EXCEPCIONLECTURA_H
-#define TP4_ALGORITMOS2_EXCEPCIONLECTURA_H
+#ifndef EXCEPCIONLECTURA_H
+#define EXCEPCIONLECTURA_H
 
 #include <iostream>
 #include <exception>
@@ -11,13 +8,14 @@ using namespace std;
 class ExcepcionLectura: public exception {
 
 private:
-
 	string mensaje;
 
 public:
     //PRE: -
     //POST: Construye la excepcion con el nombre del archivo
     ExcepcionLectura(string archivo) throw();
+
+    virtual ~ExcepcionLectura() throw();
 
     //PRE: -
     //POST: devuelve un mensaje describiendo la excepcion
@@ -26,4 +24,4 @@ public:
 };
 
 
-#endif //TP4_ALGORITMOS2_EXCEPCIONLECTURA_H
+#endif //EXCEPCIONLECTURA_H
