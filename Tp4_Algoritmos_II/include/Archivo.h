@@ -21,6 +21,9 @@ class Archivo
 
         //POST: compara una pelicula con las peliculas de la lista de vistas. Devuelve true si la recomienda
         bool recomedarPelicula(Pelicula* peliculaNoVista);
+
+        //POST: intenta crear el archivo de peliculas vistas. Devuleve true en caso afirmativo
+        bool crearArchivoVistas();
     public:
 
         //Constructor
@@ -36,21 +39,26 @@ class Archivo
         void generarListas();
 
         //PRE:-
-        //POST:Devuelve la lista vista
-        Lista<Pelicula*> getListaVistas();
+        //POST:Devuelve la lista de peliculas vistas
+        Lista<Pelicula*>& getListaVistas();
 
         //PRE:-
-        //POST:Devuelve la lista vista
-        Lista<Pelicula*> getListaNoVistas();
+        //POST:Devuelve la lista de peliculas no vistas
+        Lista<Pelicula*>& getListaNoVistas();
 
         //PRE:-
-        //POST:Devuelve la lista vista
-        Lista<Pelicula*> getListaRecomendados();
+        //POST:Devuelve la lista de peliculas recomendadas
+        Lista<Pelicula*>& getListaRecomendados();
 
+        //POST: Carga en listaVistas las peliculas vistas de un archovo
+        void cargarPeliculasVistas();
+
+        //POST: Carga en listaNoVistas las peliculas vistas de un archovo
+		void cargarPeliculasNoVistas();
 
         //PRE: Recibe una lista y una ruta de tipo string archivo txt
         //POST: Carga las peliculas a las listas
-        void cargarPeliculas(Lista<Pelicula*> &lista, string rutaArchivo);
+        void cargarPeliculas(Lista<Pelicula*> &lista, ifstream& archivoALeer);
 
         //PRE: Recibe la lista a mostrar
         //POST: Muestra TODOS los elementos de la lista

@@ -28,6 +28,17 @@ bool Archivo::recomedarPelicula(Pelicula* peliculaNoVista)
 	return false;
 }
 
+bool Archivo::crearArchivoVistas()
+{
+    ofstream archivoVistas(ARCHIVO_VISTAS);
+
+    if(!archivoVistas.fail()){
+    	archivoVistas.close();
+    	return true;
+    }
+    return false;
+}
+
 //PRE: Peliculas vistas y no vistas ya cargadas
 void Archivo::armarRecomendada()
 {
@@ -52,29 +63,25 @@ void Archivo::armarRecomendada()
 
 // GETTERS DE LAS LISTAS (DEVUELVEN LA LISTA PARA MANEJAR)
 
-Lista<Pelicula*> Archivo::getListaNoVistas()
+Lista<Pelicula*>& Archivo::getListaNoVistas()
 {
     return listaNoVistas;
 }
 
-Lista<Pelicula*> Archivo::getListaVistas()
+Lista<Pelicula*>& Archivo::getListaVistas()
 {
     return listaVistas;
 }
 
-Lista<Pelicula*> Archivo::getListaRecomendados()
+Lista<Pelicula*>& Archivo::getListaRecomendados()
 {
     return listaRecomendados;
 }
 
 void Archivo::generarListas()
 {
-    Lista<Pelicula*> AuxVistas = getListaVistas();
-    Lista<Pelicula*> AuxNoVistas = getListaNoVistas();
-
-    cargarPeliculas(AuxVistas, ARCHIVO_VISTAS);
-    cargarPeliculas(AuxNoVistas, ARCHIVO_NO_VISTAS);
-
+	cargarPeliculasNoVistas();
+	cargarPeliculasVistas();
 }
 
 void Archivo::mostrarse(Lista<Pelicula*>& lista)
@@ -102,29 +109,62 @@ void Archivo::insertarActores (string actores, Pelicula* pelicula)
     }
 }
 
-void Archivo::cargarPeliculas( Lista<Pelicula*>& lista , string rutaArchivo)
+void Archivo::cargarPeliculasVistas()
 {
-    string titulo, genero, director, puntajeString, actores;
+	ifstream archivoVistas(ARCHIVO_VISTAS);
+	if(archivoVistas.fail())
+	{
+		cout << "No se puedo encontrar el archivo " << ARCHIVO_VISTAS << endl;
+		cout << "Se procedera a crear el archivo" << endl;
+		if(crearArchivoVistas())
+			cout << "El archivo se creo exitosamente" << endl;
+		else
+			cout << "No se puedo crear el archivo" << endl;
+		return;
+	}
 
-    ifstream archivo;
-    archivo.open(rutaArchivo, fstream::in);
-    if(archivo.fail()) {
-        throw ExcepcionLectura(rutaArchivo);
+    cargarPeliculas(listaNoVistas, archivoVistas);
+    archivoVistas.close();
+
+}
+
+
+void Archivo::cargarPeliculasNoVistas()
+{
+    ifstream archivoNoVistas;
+    archivoNoVistas.open(ARCHIVO_NO_VISTAS, fstream::in);
+    if(archivoNoVistas.fail()) {
+        throw ExcepcionLectura(ARCHIVO_NO_VISTAS);
         return ;
     }
 
-	while(!archivo.eof()){
-	    getline(archivo, titulo);
-	    getline(archivo, genero);
-	    getline(archivo, puntajeString);
-	    getline(archivo, director);
-	    getline(archivo, actores);
+    cargarPeliculas(listaNoVistas, archivoNoVistas);
+    archivoNoVistas.close();
+}
+
+void Archivo::cargarPeliculas( Lista<Pelicula*>& lista , ifstream& archivoALeer)
+{
+    string titulo, genero, director, puntajeString, actores;
+
+    Iterador<Pelicula*> iteradorLista;
+
+    lista.iniciarIterador(iteradorLista);
+    iteradorLista.apuntarFinalLista();
+
+	while(!archivoALeer.eof()){
+	    getline(archivoALeer, titulo);
+	    getline(archivoALeer, genero);
+	    getline(archivoALeer, puntajeString);
+	    getline(archivoALeer, director);
+	    getline(archivoALeer, actores);
 
 	    Pelicula* pelicula = new Pelicula(titulo, genero, director, stod(puntajeString));
 
 	    insertarActores(actores, pelicula);
+
+	    iteradorLista.agregarDato(pelicula);
+	    iteradorLista.siguiente();
 	}
-	archivo.close();
 }
 
 Archivo::~Archivo()
