@@ -13,5 +13,5 @@ ExcepcionLectura::~ExcepcionLectura() throw()
 
 const char* ExcepcionLectura::what() const throw()
 {
-	return "Error: división por cero...";
+	return mensaje.c_str();
 }
