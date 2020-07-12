@@ -99,12 +99,18 @@ void Archivo::insertarActores (string actores, Pelicula* pelicula)
     string actor = "";
     string* aux;
 
-    for (unsigned i= 0; i < actores.length() ; ++i) {
-        actor += actores[i];
-        if (actores[i] == ' ' || i == (actores.length() - 1) ){
-            aux = new string(actor);
-            pelicula->insertarActor(aux);
-            actor = "";
+    for (unsigned i= 0; i < actores.length() ; ++i)
+    {
+    	if (actores[i] != ' ')
+    		actor += actores[i];
+        if (actores[i] == ' ' || i == (actores.length() - 1) )
+        {
+        	if(actor != "")
+        	{
+				aux = new string(actor);
+				pelicula->insertarActor(aux);
+				actor = "";
+        	}
         }
     }
 }
@@ -123,7 +129,7 @@ void Archivo::cargarPeliculasVistas()
 		return;
 	}
 
-    cargarPeliculas(listaNoVistas, archivoVistas);
+    cargarPeliculas(listaVistas, archivoVistas);
     archivoVistas.close();
 
 }
@@ -164,6 +170,9 @@ void Archivo::cargarPeliculas( Lista<Pelicula*>& lista , ifstream& archivoALeer)
 
 	    iteradorLista.agregarDato(pelicula);
 	    iteradorLista.siguiente();
+
+	    // se lee la linea en blanco
+	    getline(archivoALeer, titulo);
 	}
 }
 

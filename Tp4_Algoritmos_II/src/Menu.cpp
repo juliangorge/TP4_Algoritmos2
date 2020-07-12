@@ -38,6 +38,7 @@ void Menu::cargarDatos()
     //Generamos las listas correspondientes
     listas.generarListas();
     cout << "Se han cargado los datos correctamente! "<<endl;
+    //listas.armarRecomendada();
 }
 
 void Menu::mostrarOpciones()
