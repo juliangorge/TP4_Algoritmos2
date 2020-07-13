@@ -38,6 +38,7 @@ class Nodo
         // POST: Devuelve el puntero al siguiente nodo
         Nodo* getSiguiente();
 
+        // POST; Devuelve la dirección de memoria del puntero al siguiente nodo
         Nodo** getPunteroSiguiente();
 
 };

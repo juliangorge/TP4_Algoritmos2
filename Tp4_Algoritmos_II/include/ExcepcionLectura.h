@@ -14,6 +14,7 @@ private:
 public:
 
     //Constructor de la excepcion con el nombre del archivo
+	// POST: crea un objeto ExcepcionLectura
     ExcepcionLectura(string archivo) throw();
 
     //Destructor
