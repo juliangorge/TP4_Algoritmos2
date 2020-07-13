@@ -1,18 +1,39 @@
+#include <iostream>
 #include"Menu.h"
+
+using namespace std;
 
 int main()
 {
     Menu menu;
-    int opcion;
+    string opcion;
+    int numeroIngreado = 1;
+    bool volverAIngresar = true;
 
     //Cargamos los datos
     menu.cargarDatos();
 
     menu.mostrarOpciones();
-    cout << "Ingrese una opcion :"; cin >> opcion ;
-    while(opcion != OPCION_SALIR)
+    cout << "Ingrese una opcion :";
+    while(numeroIngreado != OPCION_SALIR)
     {
-        switch(opcion)
+
+    	while(volverAIngresar)
+    	{
+		cout << "Ingrese una opcion :";
+    		volverAIngresar = false;
+        	cin >> opcion;
+        	try
+        	{
+        		numeroIngreado = stoi(opcion);
+        	}
+        	catch (...)
+        	{
+        		volverAIngresar = true;
+        		cout << "Opcion no disponible"<<endl;
+        	}
+    	}
+        switch(numeroIngreado)
         {
             case OPCION_VISTAS:
             menu.mostrarVistas();
@@ -26,13 +47,17 @@ int main()
             menu.mostrarRecomendacion();
             break;
 
+            case OPCION_SALIR:
+            break;
+
             default:
             cout << "Opcion no disponible"<<endl;
+            break;
         }
 
         //Volvemos a pedir una opcion
-        cout << "Ingrese una opcion :";
-        cin >> opcion ;
+
+        volverAIngresar = true;
     }
 
     return 0;
