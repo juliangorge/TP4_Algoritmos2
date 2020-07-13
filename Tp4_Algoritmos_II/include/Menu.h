@@ -43,6 +43,10 @@ class Menu
         //POST: Muestra por pantalla las opciones del Menu
         void mostrarOpciones();
 
+        //PRE:
+        //POST: Muestra la despedida del programa y los integrantes por orden alfabetico.
+        void despedida();
+
         //Destructor
         ~Menu();
 

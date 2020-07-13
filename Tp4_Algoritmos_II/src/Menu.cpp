@@ -37,6 +37,16 @@ void Menu::mostrarOpciones()
     cout << " 0 - Salir " << endl;
 }
 
+void Menu::despedida()
+{
+    cout << "Muchas gracias por usar nuestro programa ! " << endl;
+    cout << "\nIntegrantes : " << endl;
+    cout << "Arrachea Tomas " << endl;
+    cout << "Cufre Francisco Jose " << endl;
+    cout << "Ceorge Julian Alfredo " << endl;
+    cout << "Villores Alejo" << endl;
+}
+
 Menu::~Menu()
 {
     // Destructor

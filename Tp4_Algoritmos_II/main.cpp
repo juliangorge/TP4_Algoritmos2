@@ -46,5 +46,8 @@ int main()
             cout << "Ingrese una opcion: ";cin >> numeroIngreado;
     }
 
+    //Mostramos la despedida
+    menu.despedida();
+
     return 0;
 }
