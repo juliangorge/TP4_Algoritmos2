@@ -8,29 +8,17 @@ Menu::Menu()
 
 //PRE -
 //POST: Muestra la lista de recomendacion
-void Menu::mostrarRecomendacion(){
-    Lista<Pelicula*> listaAux = listas.getListaRecomendados();
-
-    //Muestra  la lista de Recomendaciones
-    listas.mostrarse(listaAux);
-
-    listaAux.vaciarLista(false);
+void Menu::mostrarRecomendacion()
+{
+    listas.mostrarse(listas.getListaRecomendados());
 }
 void Menu::mostrarNoVistas()
 {
-    Lista<Pelicula*> listaAux = listas.getListaNoVistas();
-    //Muestra  la lista de no vistas
-    listas.mostrarse(listaAux);
-
-    listaAux.vaciarLista(false);
+    listas.mostrarse(listas.getListaNoVistas());
 }
 void Menu::mostrarVistas()
 {
-     Lista<Pelicula*> listaAux = listas.getListaVistas();
-    //Muestra  la lista de vistas
-    listas.mostrarse(listaAux);
-
-    listaAux.vaciarLista(false);
+    listas.mostrarse(listas.getListaVistas());
 }
 
 void Menu::cargarDatos()
@@ -38,7 +26,7 @@ void Menu::cargarDatos()
     //Generamos las listas correspondientes
     listas.generarListas();
     cout << "Se han cargado los datos correctamente! "<<endl;
-    //listas.armarRecomendada();
+    listas.armarRecomendada();
 }
 
 void Menu::mostrarOpciones()
