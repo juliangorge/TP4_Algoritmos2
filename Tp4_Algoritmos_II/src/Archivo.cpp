@@ -85,11 +85,17 @@ void Archivo::generarListas()
 
 void Archivo::mostrarse(Lista<Pelicula*>& lista)
 {
-	Iterador<Pelicula*> iteradorPeliculas;
-    for(lista.iniciarIterador(iteradorPeliculas); !iteradorPeliculas.finalIterador(); iteradorPeliculas.siguiente())
-    {
-    	// El dato es un puntero a pelicula
-    	iteradorPeliculas.obtenerDato()->mostrarPelicula();
+	//Si la lista esta vacia...
+	if(lista.getTam() != 0 ){
+        Iterador<Pelicula*> iteradorPeliculas;
+        for(lista.iniciarIterador(iteradorPeliculas); !iteradorPeliculas.finalIterador(); iteradorPeliculas.siguiente())
+        {
+            // El dato es un puntero a pelicula
+            iteradorPeliculas.obtenerDato()->mostrarPelicula();
+        }
+    }
+    else{
+        cout << "La lista no posee peliculas !" <<endl;
     }
 }
 
