@@ -43,7 +43,7 @@ void Menu::despedida()
     cout << "\nIntegrantes : " << endl;
     cout << "Arrachea Tomas " << endl;
     cout << "Cufre Francisco Jose " << endl;
-    cout << "Ceorge Julian Alfredo " << endl;
+    cout << "Gorge Julian Alfredo " << endl;
     cout << "Villores Alejo" << endl;
 }
 
