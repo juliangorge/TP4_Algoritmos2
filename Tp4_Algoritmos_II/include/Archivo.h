@@ -29,7 +29,6 @@ class Archivo
     public:
 
         //Constructor
-
         Archivo();
 
         //PRE: Peliculas vistas y no vistas ya cargadas

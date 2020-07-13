@@ -7,7 +7,8 @@
 
 class Pelicula
 {
-    private: //Atributos
+    //Atributos
+    private:
 
         string nombre;
         string genero;
@@ -19,7 +20,8 @@ class Pelicula
         //POST: verifica si un actor es parte de una pelicula. Devueve true en caso afirmativo
         bool buscarActorEnPelicula(string* actor, Pelicula* pelicula);
 
-    public: //Metodos
+    //Metodos
+    public: 
 
         //Constructor
         //PRE: puntaje debe etar comprendido entre 0 y 10

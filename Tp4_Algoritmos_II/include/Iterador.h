@@ -3,52 +3,53 @@
 
 #include "Nodo_Template.h"
 
-// iterador de listas
+// Iterador de listas
 template<class Dato>
 class Iterador
 {
-private:
-	Nodo<Dato>** actual;
-	unsigned* tamLista;
 
-public:
+	private:
+		Nodo<Dato>** actual;
+		unsigned* tamLista;
 
-	// constructor sin parametros.
-	// POST: crea un iterador.
-	Iterador();
+	public:
 
-	// destructor.
-	// POST: destruye un iterador.
-	virtual ~Iterador();
+		// Constructor sin parametros.
+		// POST: crea un iterador.
+		Iterador();
 
-	// POST: setea los atributos.
-	void setInicio(Nodo<Dato>** nodoInicial, unsigned* tamInicial);
+		// Destructor.
+		// POST: destruye un iterador.
+		virtual ~Iterador();
 
-	// POST: devuelve true si el iterador esta asociado a una lista
-	bool iteradorInicializado();
+		// POST: setea los atributos.
+		void setInicio(Nodo<Dato>** nodoInicial, unsigned* tamInicial);
 
-	// PRE: el iterador debe estar inicializado
-	// POST: salta al siguiente elemento de la lista.
-	void siguiente();
+		// POST: devuelve true si el iterador esta asociado a una lista
+		bool iteradorInicializado();
 
-	// POST: devuelve true si es el final de la lista o si el iterador no esta inicializado
-	bool finalIterador();
+		// PRE: el iterador debe estar inicializado
+		// POST: salta al siguiente elemento de la lista.
+		void siguiente();
 
-	// PRE: el iterador debe estar inicializado
-	// POST: apunta al final de la lista que se esta iterando
-	void apuntarFinalLista();
+		// POST: devuelve true si es el final de la lista o si el iterador no esta inicializado
+		bool finalIterador();
 
-	// PRE: el iterador debe estar inicializado
-	// POST: devuelve el dato de la posicion actual.
-	Dato obtenerDato();
+		// PRE: el iterador debe estar inicializado
+		// POST: apunta al final de la lista que se esta iterando
+		void apuntarFinalLista();
 
-	// PRE: el iterador debe estar inicializado
-	// POST: devuelve el dato de la posicion actual y lo elimina de la lista.
-	Dato eliminarDato();
+		// PRE: el iterador debe estar inicializado
+		// POST: devuelve el dato de la posicion actual.
+		Dato obtenerDato();
 
-	// PRE: el iterador debe estar inicializado
-	// POST: agrega un dato ANTES del dato actual. Si no quedan más datos lo agrega al final.
-	void agregarDato(Dato datoAgregado);
+		// PRE: el iterador debe estar inicializado
+		// POST: devuelve el dato de la posicion actual y lo elimina de la lista.
+		Dato eliminarDato();
+
+		// PRE: el iterador debe estar inicializado
+		// POST: agrega un dato ANTES del dato actual. Si no quedan más datos lo agrega al final.
+		void agregarDato(Dato datoAgregado);
 };
 
 template<class Dato>
@@ -164,4 +165,4 @@ void Iterador<Dato>::agregarDato(Dato datoAgregado)
 	cout << endl;
  */
 
-#endif /* TP4_ALGORITMOS_II_INCLUDE_ITERADOR_H_ */
+#endif //ITERADOR_H_

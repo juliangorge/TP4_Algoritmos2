@@ -169,13 +169,13 @@ void Archivo::cargarPeliculas( Lista<Pelicula*>& lista , ifstream& archivoALeer)
 	    iteradorLista.agregarDato(pelicula);
 	    iteradorLista.siguiente();
 
-	    // se lee la linea en blanco
+	    // Se lee la linea en blanco
 	    getline(archivoALeer, titulo);
 	}
 }
 
 Archivo::~Archivo()
 {
+	// Destructor
 	listaRecomendados.vaciarLista(false);
-    //dtor
 }

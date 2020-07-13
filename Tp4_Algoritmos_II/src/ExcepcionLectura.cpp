@@ -7,7 +7,7 @@ ExcepcionLectura::ExcepcionLectura(string archivo) throw()
 
 ExcepcionLectura::~ExcepcionLectura() throw()
 {
-	//dtor
+	// Destructor
 }
 
 

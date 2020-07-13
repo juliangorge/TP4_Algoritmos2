@@ -8,54 +8,53 @@ using namespace std;
 template<class Dato>
 class Nodo
 {
- private:
-     Dato dato; // Dato a almacenar
-     Nodo* psig; // Puntero a otro nodo
- public:
+    private:
+        Dato dato; // Dato a almacenar
+        Nodo* psig; // Puntero a otro nodo
 
-     // PRE: Ninguna
-     // POST: Crea un nodo con el dato d
-     // y el puntero a NULL
-     Nodo(Dato d);
+    public:
 
-     // PRE: Nodo creado
-     // POST: No hace nada
-     virtual ~Nodo();
+        // PRE: Ninguna
+        // POST: Crea un nodo con el dato d y el puntero a NULL
+        Nodo(Dato d);
 
-     // PRE: el nodo tiene que estar creado
-     // POST: El nodo queda con el dato d
-     void setDato(Dato d);
+        // PRE: Nodo creado
+        // POST: No hace nada
+        virtual ~Nodo();
 
-     // PRE: nodo creado
-     // POST: devuelve el dato que contiene el nodo
-     Dato getDato();
+        // PRE: el nodo tiene que estar creado
+        // POST: El nodo queda con el dato d
+        void setDato(Dato d);
 
-     // PRE: nodo creado
-     // POST: el puntero al siguiente nodo apuntará a ps
-     void setSiguiente(Nodo* ps);
+        // PRE: nodo creado
+        // POST: devuelve el dato que contiene el nodo
+        Dato getDato();
 
-     // PRE: nodo creado
-     // POST: Devuelve el puntero al siguiente nodo
-     Nodo* getSiguiente();
+        // PRE: nodo creado
+        // POST: el puntero al siguiente nodo apuntará a ps
+        void setSiguiente(Nodo* ps);
 
-     Nodo** getPunteroSiguiente();
+        // PRE: nodo creado
+        // POST: Devuelve el puntero al siguiente nodo
+        Nodo* getSiguiente();
+
+        Nodo** getPunteroSiguiente();
+
 };
 
-
-/////////////////////////////////////////////////////////////////
 template<class Dato>
 Nodo<Dato>::Nodo(Dato d)
 {
-
-    //EL dato es un puntero a objeto
+    // El dato es un puntero a objeto
     dato = d;
     psig = 0;
 
 }
+
 template<class Dato>
 Nodo<Dato>::~Nodo()
 {
-    //Como el dato tiene memoria reservada , debo liberarla
+    // Como el dato tiene memoria reservada , debo liberarla
 	if (dato != 0)
 		delete dato;
 }
@@ -63,7 +62,7 @@ Nodo<Dato>::~Nodo()
 template<class Dato>
 void Nodo<Dato>::setDato(Dato d)
 {
-    dato = d; //EL dato es un puntero a objeto
+    dato = d; // El dato es un puntero a objeto
     //cout<<dato<<endl;
 }
 
@@ -91,7 +90,5 @@ Nodo<Dato>** Nodo<Dato>::getPunteroSiguiente()
 {
     return &psig;
 }
-
-
 
 #endif // NODO_TEMPLATE_H

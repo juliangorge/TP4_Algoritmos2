@@ -1,11 +1,9 @@
 #ifndef LISTA_TEMPLATE_H
 #define LISTA_TEMPLATE_H
 
-//Include del paquete Nodo
 #include "Nodo_Template.h"
 #include "Iterador.h"
 
-//Libria iostream
 #include<iostream>
 
 
@@ -13,73 +11,71 @@ template<class Dato>
 class Lista
 {
 
-private:
+    private:
 
-    // Primer elemento de la lista
-    Nodo<Dato>* primero;
+        // Primer elemento de la lista
+        Nodo<Dato>* primero;
 
-    // Tamaño de la lista
-    unsigned tam;
+        // Tamaño de la lista
+        unsigned tam;
 
- public:
-     // Constructor
-     // PRE: ninguna
-     // POST: construye una lista vacia
-    Lista();
-
-
-    // Constructor de copia
-    // PRE: La lista ingresada debe estar creada
-    // POST: construye una lista con los datos de una lista existente
-    Lista(Lista<Dato>& listaACopiar);
+    public:
+    
+        // Constructor
+        // PRE: ninguna
+        // POST: construye una lista vacia
+        Lista();
 
 
-     // Destructor
-     // PRE: lista creada
-     // POST: Libera todos los recursos de la lista
-     virtual ~Lista();
+        // Constructor de copia
+        // PRE: La lista ingresada debe estar creada
+        // POST: construye una lista con los datos de una lista existente
+        Lista(Lista<Dato>& listaACopiar);
 
-     // PRE: lista creada
-     // POST: devuelve verdadero si la lista es vacia
 
-     bool listaVacia();
+        // Destructor
+        // PRE: lista creada
+        // POST: Libera todos los recursos de la lista
+        virtual ~Lista();
 
-     // PRE: lista creada
-     // POST: agrega un dato (dentro de un nodo) al final
-     void insertar(Dato d);
+        // PRE: lista creada
+        // POST: devuelve verdadero si la lista es vacia
 
-     // PRE: - lista creada y no vacia
-     // POST: devuelve el dato que esta en la posicion pos
-     Dato getDato(unsigned pos);
+        bool listaVacia();
 
-     // PRE: - lista creada y no vacia
-     // POST: libera el nodo que esta en la posición pos
-     void delDato(unsigned pos);
+        // PRE: lista creada
+        // POST: agrega un dato (dentro de un nodo) al final
+        void insertar(Dato d);
 
-     // PRE: Lista creada
-     // POST: Devuelve tam (cantidad de nodos de la lista)
-     unsigned getTam();
+        // PRE: - lista creada y no vacia
+        // POST: devuelve el dato que esta en la posicion pos
+        Dato getDato(unsigned pos);
 
-     // POST: vacia la lista. si borrarDatos es verdadero borra los datos almacenados
-     void vaciarLista(bool borrarDatos);
+        // PRE: - lista creada y no vacia
+        // POST: libera el nodo que esta en la posición pos
+        void delDato(unsigned pos);
 
-     // PRE: iterador debe estar creado
-     // POST: inicializa el iterador
-     void iniciarIterador(Iterador<Dato>& iteradorLista);
+        // PRE: Lista creada
+        // POST: Devuelve tam (cantidad de nodos de la lista)
+        unsigned getTam();
 
-     // PRE: La lista ingresada debe estar creada
-     // POST: agrega los elementos de la lista ingresada
-     Lista<Dato>& operator+(Lista<Dato>& listaACopiar);
+        // POST: vacia la lista. si borrarDatos es verdadero borra los datos almacenados
+        void vaciarLista(bool borrarDatos);
 
-     // PRE: La lista ingresada debe estar creada
-     // POST: copia los de la lista ingresada. Si antes había datos guardados los borra.
-     Lista<Dato>& operator=(Lista<Dato>& listaACopiar);
+        // PRE: iterador debe estar creado
+        // POST: inicializa el iterador
+        void iniciarIterador(Iterador<Dato>& iteradorLista);
+
+        // PRE: La lista ingresada debe estar creada
+        // POST: agrega los elementos de la lista ingresada
+        Lista<Dato>& operator+(Lista<Dato>& listaACopiar);
+
+        // PRE: La lista ingresada debe estar creada
+        // POST: copia los de la lista ingresada. Si antes había datos guardados los borra.
+        Lista<Dato>& operator=(Lista<Dato>& listaACopiar);
 
 };
 
-
-
-//////////////////////////////////////////////////////////////////////
 template<class Dato>
 Lista<Dato>::Lista()
 {
@@ -125,8 +121,6 @@ void Lista<Dato>::insertar(Dato d)
  tam++;
 }
 
-
-
 template<class Dato>
 Dato Lista<Dato>::getDato(unsigned pos)
 {
@@ -141,7 +135,6 @@ Dato Lista<Dato>::getDato(unsigned pos)
 
     return paux->getDato();
 }
-
 
 template<class Dato>
 void Lista<Dato>::delDato(unsigned pos)
@@ -166,7 +159,6 @@ void Lista<Dato>::delDato(unsigned pos)
     delete paux;
     tam--;
 }
-
 
 template<class Dato>
 unsigned Lista<Dato>::getTam()
@@ -193,13 +185,11 @@ void Lista<Dato>::vaciarLista(bool borrarDatos)
 
 }
 
-
 template<class Dato>
 void Lista<Dato>::iniciarIterador(Iterador<Dato>& iteradorLista)
 {
 	iteradorLista.setInicio(&primero, &tam);
 }
-
 
 template<class Dato>
 Lista<Dato>& Lista<Dato>::operator+(Lista<Dato>& listaACopiar)
@@ -226,6 +216,5 @@ Lista<Dato>& Lista<Dato>::operator=(Lista<Dato>& listaACopiar)
 	operator+(listaACopiar);
 	return *this;
 }
-
 
 #endif // LISTA_TEMPLATE_H
