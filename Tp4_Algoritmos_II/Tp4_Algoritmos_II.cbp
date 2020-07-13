@@ -34,8 +34,17 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/Archivo.h" />
+		<Unit filename="include/ExcepcionLectura.h" />
+		<Unit filename="include/Iterador.h" />
+		<Unit filename="include/Lista_Template.h" />
+		<Unit filename="include/Menu.h" />
+		<Unit filename="include/Nodo_Template.h" />
 		<Unit filename="include/Pelicula.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Archivo.cpp" />
+		<Unit filename="src/ExcepcionLectura.cpp" />
+		<Unit filename="src/Menu.cpp" />
 		<Unit filename="src/Pelicula.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />

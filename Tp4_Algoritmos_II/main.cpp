@@ -7,54 +7,43 @@ int main()
 {
     Menu menu;
     string opcion;
-    int numeroIngreado = 1;
-    bool volverAIngresar = true;
+    int numeroIngreado = 0;
 
     // Cargamos los datos
     menu.cargarDatos();
     menu.mostrarOpciones();
 
+    //Pedimos la opcion que el usuario desea.
+    cout << "Ingrese una opcion: ";cin >> numeroIngreado;
+
     while(numeroIngreado != OPCION_SALIR)
     {
-        while(volverAIngresar)
-        {
-            cout << "Ingrese una opcion: ";
-            volverAIngresar = false;
-            cin >> opcion;
-            try
-            {
-                numeroIngreado = stoi(opcion);
-            }
-            catch (...)
-            {
-                volverAIngresar = true;
-                cout << "Opcion no disponible" << endl;
-            }
-        }
         switch(numeroIngreado)
         {
             case OPCION_VISTAS:
                 menu.mostrarVistas();
+
                 break;
 
             case OPCION_NO_VISTAS :
                 menu.mostrarNoVistas();
+
                 break;
 
             case OPCION_RECOMENDADAS:
+                cout << "Creemos que las peliculas que deberias mirar son : \n"<<endl;
                 menu.mostrarRecomendacion();
-                break;
 
-            case OPCION_SALIR:
                 break;
 
             default:
-                cout << "Opcion no disponible" << endl;
+                cout << "Opcion no disponible , ingrese nuevamente." << endl;
                 break;
             }
 
-        // Volvemos a pedir una opcion
-        volverAIngresar = true;
+            //Termina de mostrar la lista y vuelve a mostrar el menu y pedir opciones.
+            menu.mostrarOpciones();
+            cout << "Ingrese una opcion: ";cin >> numeroIngreado;
     }
 
     return 0;

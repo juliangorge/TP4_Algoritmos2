@@ -34,6 +34,7 @@ void Menu::mostrarOpciones()
     cout << " 1 - Mostrar peliculas vistas " << endl;
     cout << " 2 - Mostrar peliculas no vistas " << endl;
     cout << " 3 - Recomendacion de peliculas " << endl;
+    cout << " 0 - Salir " << endl;
 }
 
 Menu::~Menu()
