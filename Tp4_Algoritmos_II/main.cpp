@@ -10,10 +10,10 @@ int main()
     int numeroIngreado = 1;
     bool volverAIngresar = true;
 
-    //Cargamos los datos
+    // Cargamos los datos
     menu.cargarDatos();
-
     menu.mostrarOpciones();
+
     while(numeroIngreado != OPCION_SALIR)
     {
         while(volverAIngresar)
@@ -34,26 +34,26 @@ int main()
         switch(numeroIngreado)
         {
             case OPCION_VISTAS:
-            menu.mostrarVistas();
-            break;
+                menu.mostrarVistas();
+                break;
 
             case OPCION_NO_VISTAS :
-            menu.mostrarNoVistas();
-            break;
+                menu.mostrarNoVistas();
+                break;
 
             case OPCION_RECOMENDADAS:
-            menu.mostrarRecomendacion();
-            break;
+                menu.mostrarRecomendacion();
+                break;
 
             case OPCION_SALIR:
-            break;
+                break;
 
             default:
-            cout << "Opcion no disponible" << endl;
-            break;
-        }
+                cout << "Opcion no disponible" << endl;
+                break;
+            }
 
-        //Volvemos a pedir una opcion
+        // Volvemos a pedir una opcion
         volverAIngresar = true;
     }
 

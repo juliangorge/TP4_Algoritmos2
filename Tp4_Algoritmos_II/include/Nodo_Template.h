@@ -55,8 +55,8 @@ template<class Dato>
 Nodo<Dato>::~Nodo()
 {
     // Como el dato tiene memoria reservada , debo liberarla
-	if (dato != 0)
-		delete dato;
+	if(dato != 0)
+        delete dato;
 }
 
 template<class Dato>

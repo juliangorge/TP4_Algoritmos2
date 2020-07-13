@@ -88,7 +88,7 @@ void Archivo::mostrarse(Lista<Pelicula*>& lista)
 	Iterador<Pelicula*> iteradorPeliculas;
     for(lista.iniciarIterador(iteradorPeliculas); !iteradorPeliculas.finalIterador(); iteradorPeliculas.siguiente())
     {
-    	//El dato es un puntero a pelicula
+    	// El dato es un puntero a pelicula
     	iteradorPeliculas.obtenerDato()->mostrarPelicula();
     }
 }
@@ -119,27 +119,33 @@ void Archivo::cargarPeliculasVistas()
 	ifstream archivoVistas(ARCHIVO_VISTAS);
 	if(archivoVistas.fail())
 	{
-		cout << "No se puedo encontrar el archivo " << ARCHIVO_VISTAS << endl;
+		cout << "No se pudo encontrar el archivo " << ARCHIVO_VISTAS << endl;
+
 		cout << "Se procedera a crear el archivo" << endl;
 		if(crearArchivoVistas())
-			cout << "El archivo se creo exitosamente" << endl;
+			cout << " El archivo se creo exitosamente" << endl;
 		else
-			cout << "No se puedo crear el archivo" << endl;
+			cout << " No se puedo crear el archivo" << endl;
 		return;
 	}
 
     cargarPeliculas(listaVistas, archivoVistas);
     archivoVistas.close();
-
 }
 
 void Archivo::cargarPeliculasNoVistas()
 {
-    ifstream archivoNoVistas;
-    archivoNoVistas.open(ARCHIVO_NO_VISTAS, fstream::in);
+    ifstream archivoNoVistas(ARCHIVO_NO_VISTAS);
     if(archivoNoVistas.fail()){
-        throw ExcepcionLectura(ARCHIVO_NO_VISTAS);
-        return;
+		try{
+			throw ExcepcionLectura(ARCHIVO_NO_VISTAS);
+		}
+        catch (ExcepcionLectura& e)
+		{
+			cout << e.what();
+		}
+
+		return;
     }
 
     cargarPeliculas(listaNoVistas, archivoNoVistas);
@@ -155,7 +161,11 @@ void Archivo::cargarPeliculas( Lista<Pelicula*>& lista , ifstream& archivoALeer)
     lista.iniciarIterador(iteradorLista);
     iteradorLista.apuntarFinalLista();
 
-	while(!archivoALeer.eof()){
+    if(!archivoALeer.peek()){
+    	return;
+    }
+
+    while(!archivoALeer.eof()){
 	    getline(archivoALeer, titulo);
 	    getline(archivoALeer, genero);
 	    getline(archivoALeer, puntajeString);
