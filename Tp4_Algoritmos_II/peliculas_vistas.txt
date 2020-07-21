@@ -15,3 +15,63 @@ Comedia
 3
 Dennis Dugan
 Adam_Sandler Al_Pacino Katie_Holmes
+
+Insidious
+Terror
+1
+James Wan
+Rose_Byrne Patrick_Wilson Ty_Simpkins Barbara_Hershey Andrew_Astor Lin_Shaye Leigh_Whannell Angus_Sampson
+
+The Crazies
+Terror
+4
+Breck Eisner
+Timothy_Olyphant Radha_Mitchell Joe_Anderson Danielle_Panabaker Christie_Lynn Smith_Brett Rickaby_Preston
+
+Cisne negro
+Terror
+9
+Darren Aronofsky
+Natalie_Portman Mila_Kunis Vincent_Cassel Winona_Ryder Barbara_Hershey
+
+Stake land
+Terror
+6
+Jim Mickle
+Nick_Damici Connor_Paolo Danielle_Harris
+
+Kill List
+Terror
+7
+Ben Wheatley
+Neil_Maskell MyAnna_Buring Harry_Simpson Michael_Smiley Emma_Fryer
+
+La cabaña en el bosque
+Terror
+5
+Drew Goddard
+Kristen_Connolly Chris_Hemsworth Fran_Kranz Richard_Jenkins Bradley_Whitford
+
+Titanic
+Drama
+8
+James Cameron
+Leonardo_DiCaprio Kate_Winslet
+
+Una Esposa de Mentira
+Comedia
+9
+Dennis Dugan
+Adam_Sandler Jennifer_Aniston Nicole_Kidman
+
+Shrek 2
+Comedia
+10
+Andrew Adamson
+Mike_Myers Cameron_Diaz Eddie_Murphy Antonio_Banderas
+
+Pixeles
+Comedia
+6
+Chris Columbus
+Michelle_Monaghan Peter_Dinklage Adam_Sandler
