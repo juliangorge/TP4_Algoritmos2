@@ -142,15 +142,9 @@ void Archivo::cargarPeliculasVistas()
 void Archivo::cargarPeliculasNoVistas()
 {
     ifstream archivoNoVistas(ARCHIVO_NO_VISTAS);
-    if(archivoNoVistas.fail()){
-		try{
-			throw ExcepcionLectura(ARCHIVO_NO_VISTAS);
-		}
-        catch (ExcepcionLectura& e)
-		{
-			cout << e.what();
-		}
-
+    if(archivoNoVistas.fail())
+    {
+		throw ExcepcionLectura(ARCHIVO_NO_VISTAS);
 		return;
     }
 

@@ -1,5 +1,6 @@
 #include <iostream>
-#include "Menu.h"
+#include"Menu.h"
+#include "ExcepcionLectura.h"
 
 using namespace std;
 
@@ -7,43 +8,66 @@ int main()
 {
     Menu menu;
     string opcion;
-    int numeroIngreado = 0;
+    int numeroIngreado = 1;
+    bool volverAIngresar = true;
 
-    // Cargamos los datos
-    menu.cargarDatos();
-    menu.mostrarOpciones();
+    try
+    {
+    	menu.cargarDatos();
+    }
+    catch (ExcepcionLectura& e)
+	{
+		cout << e.what();
+		return 1;
+	}
 
-    //Pedimos la opcion que el usuario desea.
-    cout << "Ingrese una opcion: ";cin >> numeroIngreado;
+    //Cargamos los datos
 
+    cout << "Ingrese una opcion :";
     while(numeroIngreado != OPCION_SALIR)
     {
+
+    	while(volverAIngresar)
+    	{
+    	menu.mostrarOpciones();
+		cout << "Ingrese una opcion :";
+    		volverAIngresar = false;
+        	cin >> opcion;
+        	try
+        	{
+        		numeroIngreado = stoi(opcion);
+        	}
+        	catch (...)
+        	{
+        		volverAIngresar = true;
+        		cout << "Opcion no disponible"<<endl;
+        	}
+    	}
         switch(numeroIngreado)
         {
             case OPCION_VISTAS:
-                menu.mostrarVistas();
-
-                break;
+            menu.mostrarVistas();
+            break;
 
             case OPCION_NO_VISTAS :
-                menu.mostrarNoVistas();
-
-                break;
+            menu.mostrarNoVistas();
+            break;
 
             case OPCION_RECOMENDADAS:
-                cout << "Creemos que las peliculas que deberias mirar son : \n"<<endl;
-                menu.mostrarRecomendacion();
+            menu.mostrarRecomendacion();
+            break;
 
-                break;
+            case OPCION_SALIR:
+            break;
 
             default:
-                cout << "Opcion no disponible , ingrese nuevamente." << endl;
-                break;
-            }
+            cout << "Opcion no disponible"<<endl;
+            break;
+        }
 
-            //Termina de mostrar la lista y vuelve a mostrar el menu y pedir opciones.
-            menu.mostrarOpciones();
-            cout << "Ingrese una opcion: ";cin >> numeroIngreado;
+        //Volvemos a pedir una opcion
+
+        volverAIngresar = true;
     }
 
     //Mostramos la despedida
