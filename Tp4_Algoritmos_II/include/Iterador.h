@@ -142,27 +142,4 @@ void Iterador<Dato>::agregarDato(Dato datoAgregado)
 
 }
 
-/* ejemplo de uso:
- *
-	string* s1 = new string;
-	*s1 = "Hola";
-	string* s2 = new string;
-	*s2 = "Mundo";
-	string* s3 = new string;
-	*s3 = ":)";
-	Lista<string*> lista1;
-	lista1.insertar(s1);
-	lista1.insertar(s2);
-	lista1.insertar(s3);
-
-	Iterador<string*> iterador1;
-	string* aux;
-	for(lista1.iniciar_iterador(iterador1); !iterador1.finalIterador(); iterador1.siguiente())
-	{
-		aux = iterador1.obtenerDato();
-		cout << *aux << " ";
-	}
-	cout << endl;
- */
-
 #endif //ITERADOR_H_

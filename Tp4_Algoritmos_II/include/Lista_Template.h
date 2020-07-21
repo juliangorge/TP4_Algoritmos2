@@ -41,6 +41,7 @@ class Lista
         // PRE: lista creada
         // POST: devuelve verdadero si la lista es vacia
 
+        // POST: devuelve true si la lista esta vacia
         bool listaVacia();
 
         // PRE: lista creada
