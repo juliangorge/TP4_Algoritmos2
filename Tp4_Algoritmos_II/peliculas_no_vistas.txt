@@ -1,15 +1,3 @@
-Mi obra maestra
-Comedia negra
-8
-Gaston Duprat
-Luis_Brandoni Lucas_Aranda Raúl_Arévalo Mahmoud_Azim Daniela_Katz Guillermo_Francella Andrea_Frigerio
-
-I como Icaro
-Drama Suspenso
-10
-Henri Verneuil
-Yves_Montand Michel_Albertini Roland_Amstutz Jean-Pierre_Bagot
-
 Jack and Jill
 Comedia
 3
@@ -20,37 +8,37 @@ Insidious
 Terror
 1
 James Wan
-Rose Byrne Patrick Wilson Ty Simpkins Barbara Hershey Andrew Astor Lin Shaye Leigh Whannell Angus Sampson
+Rose_Byrne Patrick_Wilson Ty_Simpkins Barbara_Hershey Andrew_Astor Lin_Shaye Leigh_Whannell Angus_Sampson
 
 The Crazies
 Terror
 4
 Breck Eisner
-Timothy Olyphant Radha Mitchell Joe Anderson Danielle Panabaker Christie Lynn Smith Brett Rickaby Preston Bailey John Aylward Joe Reegan Glenn Morshower
+Timothy_Olyphant Radha_Mitchell Joe_Anderson Danielle_Panabaker Christie_Lynn Smith_Brett Rickaby_Preston
 
 Cisne negro
 Terror
 9
 Darren Aronofsky
-Natalie Portman Mila Kunis Vincent Cassel Winona Ryder Barbara Hershey Tina Sloan Christopher Gartin Sebastian Stan Benjamin Millepied Ksenia Solo
+Natalie_Portman Mila_Kunis Vincent_Cassel Winona_Ryder Barbara_Hershey
 
 Stake land
 Terror
 6
 Jim Mickle
-Nick Damici Connor Paolo Danielle Harris Kelly McGillis Michael Cerveris Bonnie Dennison Sean Nelson Traci Hovel Marianne Hagan Tim House
+Nick_Damici Connor_Paolo Danielle_Harris
 
 Kill List
 Terror
 7
 Ben Wheatley
-Neil Maskell MyAnna Buring Harry Simpson Michael Smiley Emma Fryer
+Neil_Maskell MyAnna_Buring Harry_Simpson Michael_Smiley Emma_Fryer
 
 La cabaña en el bosque
 Terror
 5
 Drew Goddard
-Kristen Connolly Chris Hemsworth Fran Kranz Richard Jenkins Bradley Whitford Anna Hutchison Jessie Williams Amy Acker Brian J. White Tim De Zarn
+Kristen_Connolly Chris_Hemsworth Fran_Kranz Richard_Jenkins Bradley_Whitford
 
 Titanic
 Drama
